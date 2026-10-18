@@ -57,6 +57,12 @@ ledger, result or `docs/` file was modified.
   read-only token, no secrets, offline guard).
 - `tests/test_formal_no_side_effects.py`, `tests/test_doctor_readonly.py` —
   7 new regression tests (V01 total: 227 → 234).
+- **Public-readiness presentation (OS-3)**: README status block (tests, closeout,
+  scientific status, visibility neutral), a "what you can do" summary, a CLI
+  table, `docs/assets/architecture.svg` (text-only pipeline diagram) and
+  `docs/assets/offline-demo-output.txt` (real demo output, marked SYNTHETIC).
+  The V02 binary-endpoint disclosure was added to the README (2 collision
+  events across 54 quartets). No promotional claims were added.
 
 ### Verification
 

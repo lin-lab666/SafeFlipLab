@@ -1,10 +1,10 @@
 # SafeFlipLab — manual-only offline CI.
 #
 # WHY manual only:
-#   This is a PRIVATE repository. Automatic push/PR triggers would consume
-#   Actions minutes on every push; enabling them requires explicit owner
-#   approval. Run this workflow from the Actions tab (or `gh workflow run`)
-#   when you want a green check.
+#   Automatic push/PR triggers would consume Actions minutes on every push;
+#   enabling them requires explicit owner approval. The manual-only policy is
+#   kept deliberately so no run happens by accident. Run this workflow from
+#   the Actions tab (or `gh workflow run`) when you want a green check.
 #
 # WHAT it does: installs the `test` extra (no simulator extras needed for unit
 # tests) and runs the two offline unit suites + the publication verifier.

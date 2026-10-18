@@ -1,0 +1,27 @@
+# Real output of `python examples/offline_demo.py` (captured 2026-10-18)
+# SYNTHETIC OUTPUT - NOT EXPERIMENTAL RESULTS
+# The numbers below come from a toy closing-time formula, not from a simulator
+# run. They are printed for shape/pedagogy only and must not be cited as
+# evidence. See EXAMPLES.md and DATA_AVAILABILITY.md.
+========================================================================
+SYNTHETIC OUTPUT - NOT EXPERIMENTAL RESULTS
+========================================================================
+anchor: ego_speed=27.0 m/s, front_gap=45.0 m, front_speed=25.0 m/s
+design: gap +2.0 m, speed -1.0 m/s; shared perturbation -0.80 s
+------------------------------------------------------------------------
+condition 00  control          toy min-TTC =   21.70 s
+condition 10  gap only         toy min-TTC =   22.70 s
+condition 01  speed only       toy min-TTC =   44.20 s
+condition 11  both             toy min-TTC =   46.20 s
+------------------------------------------------------------------------
+delta gap   (10-00) = +1.00 s
+delta speed (01-00) = +22.50 s
+delta both  (11-00) = +24.50 s
+I_lin (11-10-01+00) = +1.00 s
+------------------------------------------------------------------------
+These numbers come from a toy formula, not from a simulator run.
+Their sign and size were chosen to make the printout easy to read;
+they say nothing about the real study (which reports INCONCLUSIVE).
+SYNTHETIC OUTPUT - NOT EXPERIMENTAL RESULTS
+========================================================================
+# EXIT CODE: 0   (no episodes launched; no files written; no runs/ created)

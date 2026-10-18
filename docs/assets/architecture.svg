@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="760" viewBox="0 0 1040 760" role="img" aria-labelledby="title desc">
+  <title id="title">SafeFlipLab pipeline overview (V01 and V02)</title>
+  <desc id="desc">Text-only diagram of the V01 and V02 pipelines: frozen config to phase driver, four-condition quartets, ledger and report; shared safety gates and publication verification at the bottom.</desc>
+  <rect x="0" y="0" width="1040" height="760" fill="#f7f8fa"/>
+  <text x="24" y="38" font-family="sans-serif" font-size="20" font-weight="bold" fill="#1f2328">SafeFlipLab — pipeline overview</text>
+  <text x="24" y="62" font-family="sans-serif" font-size="13" fill="#57606a">v1.0 research package (frozen) + v1.1 engineering shell · exploratory, INCONCLUSIVE · no real-road safety claim</text>
+
+  <!-- V01 column -->
+  <rect x="24" y="86" width="480" height="420" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="40" y="112" font-family="sans-serif" font-size="15" font-weight="bold" fill="#1f2328">V01 — safefliplab/ (binary endpoint)</text>
+
+  <rect x="44" y="126" width="440" height="40" rx="6" fill="#eef3f8" stroke="#afc4d8"/>
+  <text x="56" y="151" font-family="sans-serif" font-size="12" fill="#1f2328">configs/dev_v01.json (smoke 24 / pilot 240) · frozen formal_v01.json (NO-GO)</text>
+
+  <line x1="264" y1="166" x2="264" y2="182" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="264,188 259,178 269,178" fill="#57606a"/>
+
+  <rect x="44" y="188" width="440" height="52" rx="6" fill="#ffffff" stroke="#afc4d8"/>
+  <text x="56" y="208" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1f2328">experiments.PhaseDriver</text>
+  <text x="56" y="226" font-family="sans-serif" font-size="11" fill="#57606a">seeds → generator (anchors) → quartet conditions 00 / 10 / 01 / 11</text>
+
+  <line x1="264" y1="240" x2="264" y2="256" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="264,262 259,252 269,252" fill="#57606a"/>
+
+  <rect x="44" y="262" width="440" height="52" rx="6" fill="#ffffff" stroke="#afc4d8"/>
+  <text x="56" y="282" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1f2328">runner → adapter</text>
+  <text x="56" y="300" font-family="sans-serif" font-size="11" fill="#57606a">ScenarioAdapter (real) · FakeAdapter (tests/offline demo, zero episodes)</text>
+
+  <line x1="264" y1="314" x2="264" y2="330" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="264,336 259,326 269,326" fill="#57606a"/>
+
+  <rect x="44" y="336" width="440" height="52" rx="6" fill="#fff8e6" stroke="#d4a72c"/>
+  <text x="56" y="356" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1f2328">EpisodeLedger — launch before run, then outcome</text>
+  <text x="56" y="374" font-family="sans-serif" font-size="11" fill="#57606a">billed attempts · budget scope · sidecar lock · raw_path is the source of truth</text>
+
+  <line x1="264" y1="388" x2="264" y2="404" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="264,410 259,400 269,400" fill="#57606a"/>
+
+  <rect x="44" y="410" width="440" height="40" rx="6" fill="#eef3f8" stroke="#afc4d8"/>
+  <text x="56" y="435" font-family="sans-serif" font-size="12" fill="#1f2328">report.py → reports/ (md, json, csv, figures) · 58/58 byte-idempotent</text>
+
+  <text x="44" y="474" font-family="sans-serif" font-size="11" fill="#57606a">V01 finding: 264/264 zero collisions → binary endpoint has zero variance.</text>
+  <text x="44" y="492" font-family="sans-serif" font-size="11" fill="#57606a">That structural result motivated V02 (continuous min-forward-TTC endpoint).</text>
+
+  <!-- V02 column -->
+  <rect x="536" y="86" width="480" height="420" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="552" y="112" font-family="sans-serif" font-size="15" font-weight="bold" fill="#1f2328">V02 — v02/v02lab/ (continuous endpoint)</text>
+
+  <rect x="556" y="126" width="440" height="40" rx="6" fill="#eef3f8" stroke="#afc4d8"/>
+  <text x="568" y="151" font-family="sans-serif" font-size="12" fill="#1f2328">v02/configs/v02_frozen_v1.json (smoke 24 / pilot 240; SHA-256 frozen)</text>
+
+  <line x1="776" y1="166" x2="776" y2="182" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="776,188 771,178 781,178" fill="#57606a"/>
+
+  <rect x="556" y="188" width="440" height="52" rx="6" fill="#ffffff" stroke="#afc4d8"/>
+  <text x="568" y="208" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1f2328">anchors.py → conditions.py → quartet.py</text>
+  <text x="568" y="226" font-family="sans-serif" font-size="11" fill="#57606a">18 deterministic anchors · shared in-anchor perturbation · 00/10/01/11</text>
+
+  <line x1="776" y1="240" x2="776" y2="256" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="776,262 771,252 781,252" fill="#57606a"/>
+
+  <rect x="556" y="262" width="440" height="52" rx="6" fill="#ffffff" stroke="#afc4d8"/>
+  <text x="568" y="282" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1f2328">phases.py → runner.py → adapter_real.py</text>
+  <text x="568" y="300" font-family="sans-serif" font-size="11" fill="#57606a">RealAdapterV02 (HighwayEnv) · FakeAdapterV02 (tests/offline demo)</text>
+
+  <line x1="776" y1="314" x2="776" y2="330" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="776,336 771,326 781,326" fill="#57606a"/>
+
+  <rect x="556" y="336" width="440" height="52" rx="6" fill="#fff8e6" stroke="#d4a72c"/>
+  <text x="568" y="356" font-family="sans-serif" font-size="12" font-weight="bold" fill="#1f2328">ledger21.py — 21-column ledger</text>
+  <text x="568" y="374" font-family="sans-serif" font-size="11" fill="#57606a">discovery vs audit streams · PAIR_MISSING handling · D42/D44 disclosed</text>
+
+  <line x1="776" y1="388" x2="776" y2="404" stroke="#57606a" stroke-width="1.5"/>
+  <polygon points="776,410 771,400 781,400" fill="#57606a"/>
+
+  <rect x="556" y="410" width="440" height="40" rx="6" fill="#eef3f8" stroke="#afc4d8"/>
+  <text x="568" y="435" font-family="sans-serif" font-size="12" fill="#1f2328">stats_anchor.py (anchor-level bootstrap) → report.py → v02/reports/</text>
+
+  <text x="556" y="474" font-family="sans-serif" font-size="11" fill="#57606a">V02 result: all four primary intervals cross 0; M1/M2 disagree on Δgap;</text>
+  <text x="556" y="492" font-family="sans-serif" font-size="11" fill="#57606a">binary endpoint is nearly information-free (2 events / 54 quartets).</text>
+
+  <!-- Shared bar -->
+  <rect x="24" y="522" width="992" height="96" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="40" y="546" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1f2328">Shared safety gates and engineering shell</text>
+  <text x="40" y="568" font-family="sans-serif" font-size="11" fill="#1f2328">formal: both --confirm and --max-episodes 12800 required → refusal raised BEFORE any runs/ file is created (EXIT 2)</text>
+  <text x="40" y="586" font-family="sans-serif" font-size="11" fill="#1f2328">budget caps: smoke ≤ 24, pilot ≤ 240; ledger rejects over-cap launches; no free retries; _require_formal_go guards non-CLI callers</text>
+  <text x="40" y="604" font-family="sans-serif" font-size="11" fill="#1f2328">doctor: strictly read-only (reports “no ledger in this checkout” instead of creating one)</text>
+
+  <!-- Bottom bar -->
+  <rect x="24" y="634" width="992" height="102" rx="8" fill="#ffffff" stroke="#d0d7de"/>
+  <text x="40" y="658" font-family="sans-serif" font-size="14" font-weight="bold" fill="#1f2328">Verification (offline, zero simulator episodes)</text>
+  <text x="40" y="680" font-family="sans-serif" font-size="11" fill="#1f2328">tests: V01 234 OK (skipped=1) · V02 143 OK — FakeAdapter / synthetic data only; no runs/ residue</text>
+  <text x="40" y="698" font-family="sans-serif" font-size="11" fill="#1f2328">PUBLICATION_MANIFEST.csv: 200 files / 3,111,181 bytes, byte-exact at v1.0 (commit baee8be)</text>
+  <text x="40" y="716" font-family="sans-serif" font-size="11" fill="#1f2328">verify_publication.py: v1.0 byte-exact + v1.1 engineering scope (explicit whitelists; no wildcards)</text>
+  <text x="40" y="734" font-family="sans-serif" font-size="10" fill="#57606a">Sources: README.md, ARCHITECTURE.md, TESTING.md, PUBLICATION_SCOPE.md. Diagram is text-only; no external assets.</text>
+</svg>

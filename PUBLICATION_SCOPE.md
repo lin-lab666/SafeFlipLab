@@ -40,7 +40,8 @@ v1.1 **只包含**以下三类变化，**不触碰科研数据与结果产物**�
      测试产物说明；
    - `.gitignore`：补充构建/覆盖率产物；
    - 新增本文档（以及后续 GH-3 的安装/快速开始/架构/示例/贡献/安全/测试/
-     数据可用性/变更日志文档与 CI 配置）。
+     数据可用性/变更日志文档与 CI 配置；OS-3 的展示资源
+     `docs/assets/architecture.svg` 与 `docs/assets/offline-demo-output.txt`）。
 3. **工具健壮性**：
    - `scripts/verify_publication.py`：两级范围报告（v1.0 字节校验 + v1.1
      白名单）；

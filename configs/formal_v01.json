@@ -1,0 +1,48 @@
+{
+  "protocol": "SafeFlipLab-v01",
+  "purpose": "frozen formal configuration. NOT executed without explicit human GO.",
+  "controller_policy": "boundary",
+  "simulator": {
+    "horizon_s": 25.0,
+    "simulation_hz": 15,
+    "policy_hz": 5
+  },
+  "budget": {
+    "episodes_per_method_seed": 800,
+    "discovery_episodes": 400,
+    "audit_episodes": 400,
+    "methods": 2,
+    "master_seeds": 8,
+    "total_episodes": 12800
+  },
+  "formal_master_seeds": [
+    3451794858,
+    3280522798,
+    3404856911,
+    4151677968,
+    565867193,
+    2023892289,
+    4034206253,
+    3582183474
+  ],
+  "master_seed_derivation": "SHA256(canonical_json(['SafeFlipLab-v01','formal-master',i])) for i=0..7; never selected from results",
+  "wide_explore": {
+    "discovery_anchors": 100,
+    "discovery_quartets_per_anchor": 1,
+    "nominees": 5,
+    "nomination_rule": "discovery delta_both desc, tie-break (first_seen, anchor_id)",
+    "audit_quartets_per_nominee": 20
+  },
+  "verify_first": {
+    "stage1_anchors": 40,
+    "stage1_quartets_per_anchor": 1,
+    "selected": 20,
+    "selection_rule": "delta_both desc, then delta_gap desc, then delta_speed desc, then (first_seen, anchor_id); frozen after stage 1",
+    "extra_quartets_per_selected": 3,
+    "nominees": 5,
+    "nomination_pool": "all stage-1 discovered anchors",
+    "nomination_rule": "PROPOSED: mean delta_both desc, valid quartets desc, (first_seen, anchor_id); requires human sign-off before formal",
+    "audit_quartets_per_nominee": 20
+  },
+  "status": "PREPARED ONLY - requires --confirm --max-episodes 12800 and explicit human GO"
+}

@@ -1,0 +1,34 @@
+{
+  "protocol": "SafeFlipLab-v01",
+  "purpose": "development-only configuration for smoke and pilot phases (dev_seed is never formal evidence)",
+  "dev_seed": 20261011,
+  "controller_policy": "boundary",
+  "simulator": {
+    "note": "frozen by safefliplab.adapter (cornercaselab 0.3.0 interface, 25 s horizon, 15 Hz sim, 5 Hz policy)",
+    "horizon_s": 25.0,
+    "simulation_hz": 15,
+    "policy_hz": 5
+  },
+  "interventions": {
+    "10": "front_gap += 2.0 m",
+    "01": "ego_speed -= 1.0 m/s",
+    "11": "both"
+  },
+  "smoke": {
+    "max_episodes": 24,
+    "wide_discovery_anchors": 3,
+    "verify_stage1_anchors": 2,
+    "determinism_replay": true,
+    "note": "24 = 12 (3 WideExplore discovery quartets) + 8 (2 VerifyFirst stage-1 quartets) + 4 (same-seed replay of WideExplore anchor 0)"
+  },
+  "pilot": {
+    "max_episodes": 240,
+    "wide_discovery_anchors": 15,
+    "wide_nominees": 3,
+    "audit_quartets_per_nominee": 5,
+    "verify_stage1_anchors": 6,
+    "verify_selected": 3,
+    "verify_extra_quartets": 3,
+    "note": "PROPOSED structural downscale of the frozen formal design; 120 episodes per method; pilot numbers are NOT formal evidence"
+  }
+}

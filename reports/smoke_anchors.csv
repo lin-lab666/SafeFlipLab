@@ -1,0 +1,6 @@
+master_seed,method,stream,anchor_id,anchor_index,n_complete_quartets,n_incomplete_quartets,n_replays,Y00_count,Y10_count,Y01_count,Y11_count,denominator,rate_00,rate_10,rate_01,rate_11,mean_delta_both,mean_delta_gap,mean_delta_speed,mean_interaction,reverse_pairs,rescue_pairs
+20261011,VerifyFirst,discovery,anchor-0000,0,1,0,0,0,0,0,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0
+20261011,VerifyFirst,discovery,anchor-0001,1,1,0,0,0,0,0,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0
+20261011,WideExplore,discovery,anchor-0000,0,1,0,1,0,0,0,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0
+20261011,WideExplore,discovery,anchor-0001,1,1,0,0,0,0,0,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0
+20261011,WideExplore,discovery,anchor-0002,2,1,0,0,0,0,0,0,1,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0

@@ -1,0 +1,11 @@
+# SafeFlipLab pinned runtime environment.
+# Python 3.13 (project-local virtual environment only; no system changes).
+#
+# The simulation interface is reused from the pinned CornerCaseLab v0.3.0
+# GitHub tag (Apache-2.0). The package is NOT on PyPI (verified 2026-10-12).
+cornercaselab @ git+https://github.com/lin-lab666/CornerCaseLab@v0.3.0
+highway-env==1.10.2
+gymnasium==1.2.2
+numpy>=1.24,<3
+Pillow>=10,<13
+matplotlib>=3.8,<4

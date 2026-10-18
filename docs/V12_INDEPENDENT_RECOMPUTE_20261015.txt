@@ -1,0 +1,191 @@
+====================================================================================================
+V01 — independent recomputation (main study: binary collision endpoint + exploratory margins)
+====================================================================================================
+  ledger data rows = 528
+  by phase = {'smoke': 48, 'pilot': 480}   by row_type = {'launch': 264, 'outcome': 264}
+
+  --- smoke ---
+    smoke episodes_launched                              recomputed=24                       published=24                       OK
+    smoke episodes_completed                             recomputed=24                       published=24                       OK
+    smoke episodes_errored                               recomputed=0                        published=0                        OK
+    smoke episodes_interrupted                           recomputed=0                        published=0                        OK
+    orphan launches (launch w/o outcome) = 0
+    complete primary quartets = 5   replays = 1
+    smoke complete_quartets                              recomputed=5                        published=5                        OK
+    smoke replay_quartets                                recomputed=1                        published=1                        OK
+
+    binary (ego_collision) per (method, stream):
+    smoke VerifyFirst/discovery n_quartets               recomputed=2                        published=2                        OK
+    smoke VerifyFirst/discovery mean_delta_both          recomputed=0.0                      published=0.0                      OK
+    smoke VerifyFirst/discovery reverse_pairs            recomputed=0                        published=0                        OK
+    smoke VerifyFirst/discovery rescue_pairs             recomputed=0                        published=0                        OK
+    smoke VerifyFirst/discovery collisions 00            recomputed=0                        published=0                        OK
+    smoke VerifyFirst/discovery collisions 10            recomputed=0                        published=0                        OK
+    smoke VerifyFirst/discovery collisions 01            recomputed=0                        published=0                        OK
+    smoke VerifyFirst/discovery collisions 11            recomputed=0                        published=0                        OK
+    smoke WideExplore/discovery n_quartets               recomputed=3                        published=3                        OK
+    smoke WideExplore/discovery mean_delta_both          recomputed=0.0                      published=0.0                      OK
+    smoke WideExplore/discovery reverse_pairs            recomputed=0                        published=0                        OK
+    smoke WideExplore/discovery rescue_pairs             recomputed=0                        published=0                        OK
+    smoke WideExplore/discovery collisions 00            recomputed=0                        published=0                        OK
+    smoke WideExplore/discovery collisions 10            recomputed=0                        published=0                        OK
+    smoke WideExplore/discovery collisions 01            recomputed=0                        published=0                        OK
+    smoke WideExplore/discovery collisions 11            recomputed=0                        published=0                        OK
+
+  --- pilot ---
+    pilot episodes_launched                              recomputed=240                      published=240                      OK
+    pilot episodes_completed                             recomputed=240                      published=240                      OK
+    pilot episodes_errored                               recomputed=0                        published=0                        OK
+    pilot episodes_interrupted                           recomputed=0                        published=0                        OK
+    orphan launches (launch w/o outcome) = 0
+    complete primary quartets = 60   replays = 0
+    pilot complete_quartets                              recomputed=60                       published=60                       OK
+    pilot replay_quartets                                recomputed=0                        published=0                        OK
+
+    binary (ego_collision) per (method, stream):
+    pilot VerifyFirst/audit n_quartets                   recomputed=15                       published=15                       OK
+    pilot VerifyFirst/audit mean_delta_both              recomputed=0.0                      published=0.0                      OK
+    pilot VerifyFirst/audit reverse_pairs                recomputed=0                        published=0                        OK
+    pilot VerifyFirst/audit rescue_pairs                 recomputed=0                        published=0                        OK
+    pilot VerifyFirst/audit collisions 00                recomputed=0                        published=0                        OK
+    pilot VerifyFirst/audit collisions 10                recomputed=0                        published=0                        OK
+    pilot VerifyFirst/audit collisions 01                recomputed=0                        published=0                        OK
+    pilot VerifyFirst/audit collisions 11                recomputed=0                        published=0                        OK
+    pilot VerifyFirst/discovery n_quartets               recomputed=15                       published=15                       OK
+    pilot VerifyFirst/discovery mean_delta_both          recomputed=0.0                      published=0.0                      OK
+    pilot VerifyFirst/discovery reverse_pairs            recomputed=0                        published=0                        OK
+    pilot VerifyFirst/discovery rescue_pairs             recomputed=0                        published=0                        OK
+    pilot VerifyFirst/discovery collisions 00            recomputed=0                        published=0                        OK
+    pilot VerifyFirst/discovery collisions 10            recomputed=0                        published=0                        OK
+    pilot VerifyFirst/discovery collisions 01            recomputed=0                        published=0                        OK
+    pilot VerifyFirst/discovery collisions 11            recomputed=0                        published=0                        OK
+    pilot WideExplore/audit n_quartets                   recomputed=15                       published=15                       OK
+    pilot WideExplore/audit mean_delta_both              recomputed=0.0                      published=0.0                      OK
+    pilot WideExplore/audit reverse_pairs                recomputed=0                        published=0                        OK
+    pilot WideExplore/audit rescue_pairs                 recomputed=0                        published=0                        OK
+    pilot WideExplore/audit collisions 00                recomputed=0                        published=0                        OK
+    pilot WideExplore/audit collisions 10                recomputed=0                        published=0                        OK
+    pilot WideExplore/audit collisions 01                recomputed=0                        published=0                        OK
+    pilot WideExplore/audit collisions 11                recomputed=0                        published=0                        OK
+    pilot WideExplore/discovery n_quartets               recomputed=15                       published=15                       OK
+    pilot WideExplore/discovery mean_delta_both          recomputed=0.0                      published=0.0                      OK
+    pilot WideExplore/discovery reverse_pairs            recomputed=0                        published=0                        OK
+    pilot WideExplore/discovery rescue_pairs             recomputed=0                        published=0                        OK
+    pilot WideExplore/discovery collisions 00            recomputed=0                        published=0                        OK
+    pilot WideExplore/discovery collisions 10            recomputed=0                        published=0                        OK
+    pilot WideExplore/discovery collisions 01            recomputed=0                        published=0                        OK
+    pilot WideExplore/discovery collisions 11            recomputed=0                        published=0                        OK
+
+  --- pilot exploratory margins d_min_forward_ttc_sampled_s_* ---
+    pilot VerifyFirst/audit d_ttc_gap                    recomputed=-0.0805188207            published=-0.0805188207            OK
+    pilot VerifyFirst/audit d_ttc_speed                  recomputed=-0.04830590645           published=-0.04830590645           OK
+    pilot VerifyFirst/audit d_ttc_both                   recomputed=-0.215786888526          published=-0.215786888526          OK
+    pilot VerifyFirst/discovery d_ttc_gap                recomputed=-0.100255453942          published=-0.100255453942          OK
+    pilot VerifyFirst/discovery d_ttc_speed              recomputed=-0.009535228442          published=-0.009535228442          OK
+    pilot VerifyFirst/discovery d_ttc_both               recomputed=-0.179940467602          published=-0.179940467602          OK
+    pilot WideExplore/audit d_ttc_gap                    recomputed=-0.0805188207            published=-0.0805188207            OK
+    pilot WideExplore/audit d_ttc_speed                  recomputed=-0.04830590645           published=-0.04830590645           OK
+    pilot WideExplore/audit d_ttc_both                   recomputed=-0.215786888526          published=-0.215786888526          OK
+    pilot WideExplore/discovery d_ttc_gap                recomputed=-0.044129867809          published=-0.044129867809          OK
+    pilot WideExplore/discovery d_ttc_speed              recomputed=0.085710276425           published=0.085710276425           OK
+    pilot WideExplore/discovery d_ttc_both               recomputed=-0.038342674713          published=-0.038342674713          OK
+
+====================================================================================================
+V02 — independent recomputation (continuous min-TTC endpoint + M2 + auxiliary audit)
+====================================================================================================
+
+  --- smoke ---
+    launch=24 outcome=24 orphan=0 scopes={'v02-smoke': 24}
+    primary=24 aux=0
+    smoke primary launches                               recomputed=24                       published=24                       OK
+    smoke episodes with a recoverable value              recomputed=23                       published=23                       OK
+    smoke n_primary_quartets                             recomputed=6                        published=6                        OK
+    smoke n_usable_quartets                              recomputed=5                        published=5                        OK
+    smoke anchors                                        recomputed=3                        published=3                        OK
+    M1 contrasts:
+    smoke delta_gap point                                recomputed=0.206154463123           published=0.206154463123           OK
+    smoke delta_gap ci_low                               recomputed=0.181324706994           published=0.181324706994           OK
+    smoke delta_gap ci_high                              recomputed=0.243981916951           published=0.243981916951           OK
+    smoke delta_gap n_anchors                            recomputed=3                        published=3                        OK
+    smoke delta_speed point                              recomputed=0.27272823936            published=0.27272823936            OK
+    smoke delta_speed ci_low                             recomputed=0.272460924878           published=0.272460924878           OK
+    smoke delta_speed ci_high                            recomputed=0.273261018802           published=0.273261018802           OK
+    smoke delta_speed n_anchors                          recomputed=3                        published=3                        OK
+    smoke delta_both point                               recomputed=0.118628953639           published=0.118628953639           OK
+    smoke delta_both ci_low                              recomputed=0.0721683942             published=0.0721683942             OK
+    smoke delta_both ci_high                             recomputed=0.169169271342           published=0.169169271342           OK
+    smoke delta_both n_anchors                           recomputed=3                        published=3                        OK
+    smoke i_lin point                                    recomputed=-0.360253748844          published=-0.360253748844          OK
+    smoke i_lin ci_low                                   recomputed=-0.393449296102          published=-0.393449296102          OK
+    smoke i_lin ci_high                                  recomputed=-0.339238286018          published=-0.339238286018          OK
+    smoke i_lin n_anchors                                recomputed=3                        published=3                        OK
+    M2 contrasts (smaller = safer):
+    smoke M2 delta_gap point                             recomputed=-0.083960216197          published=-0.083960216197          OK
+    smoke M2 delta_speed point                           recomputed=-0.085805976431          published=-0.085805976431          OK
+    smoke M2 delta_both point                            recomputed=-0.075026963525          published=-0.075026963525          OK
+    smoke M2 i_lin point                                 recomputed=0.094739229103           published=0.094739229103           OK
+    smoke M2 mean share 00                               recomputed=0.1133838384             published=0.1133838384             OK
+    smoke M2 mean share 10                               recomputed=0.0126315789             published=0.0126315789             OK
+    smoke M2 mean share 01                               recomputed=0.0104166667             published=0.0104166667             OK
+    smoke M2 mean share 11                               recomputed=0.0233514822             published=0.0233514822             OK
+
+  --- pilot ---
+    launch=240 outcome=240 orphan=0 scopes={'v02-pilot': 240}
+    primary=216 aux=24
+    pilot primary launches                               recomputed=216                      published=216                      OK
+    pilot episodes with a recoverable value              recomputed=216                      published=216                      OK
+    pilot n_primary_quartets                             recomputed=54                       published=54                       OK
+    pilot n_usable_quartets                              recomputed=54                       published=54                       OK
+    pilot anchors                                        recomputed=18                       published=18                       OK
+    M1 contrasts:
+    pilot delta_gap point                                recomputed=0.012678357426           published=0.012678357426           OK
+    pilot delta_gap ci_low                               recomputed=-0.052495768477          published=-0.052495768477          OK
+    pilot delta_gap ci_high                              recomputed=0.076886661984           published=0.076886661984           OK
+    pilot delta_gap n_anchors                            recomputed=18                       published=18                       OK
+    pilot delta_speed point                              recomputed=0.032696413338           published=0.032696413338           OK
+    pilot delta_speed ci_low                             recomputed=-0.058931496319          published=-0.058931496319          OK
+    pilot delta_speed ci_high                            recomputed=0.124266811487           published=0.124266811487           OK
+    pilot delta_speed n_anchors                          recomputed=18                       published=18                       OK
+    pilot delta_both point                               recomputed=0.00300474814            published=0.00300474814            OK
+    pilot delta_both ci_low                              recomputed=-0.043626667084          published=-0.043626667084          OK
+    pilot delta_both ci_high                             recomputed=0.05256454979            published=0.05256454979            OK
+    pilot delta_both n_anchors                           recomputed=18                       published=18                       OK
+    pilot i_lin point                                    recomputed=-0.042370022624          published=-0.042370022624          OK
+    pilot i_lin ci_low                                   recomputed=-0.146534474364          published=-0.146534474364          OK
+    pilot i_lin ci_high                                  recomputed=0.06130465043            published=0.06130465043            OK
+    pilot i_lin n_anchors                                recomputed=18                       published=18                       OK
+    M2 contrasts (smaller = safer):
+    pilot M2 delta_gap point                             recomputed=0.001855761668           published=0.001855761668           OK
+    pilot M2 delta_speed point                           recomputed=-0.010693454332          published=-0.010693454332          OK
+    pilot M2 delta_both point                            recomputed=-0.006227731137          published=-0.006227731137          OK
+    pilot M2 i_lin point                                 recomputed=0.002609961526           published=0.002609961526           OK
+    pilot M2 mean share 00                               recomputed=0.0233927572             published=0.0233927572             OK
+    pilot M2 mean share 10                               recomputed=0.0252485189             published=0.0252485189             OK
+    pilot M2 mean share 01                               recomputed=0.0126993029             published=0.0126993029             OK
+    pilot M2 mean share 11                               recomputed=0.0171650261             published=0.0171650261             OK
+
+  --- auxiliary allocation comparison ---
+    aux WideExplore n_nominees                           recomputed=3                        published=3                        OK
+    aux WideExplore n_reversal                           recomputed=1                        published=1                        OK
+    aux WideExplore precision_at_k                       recomputed=0.333333333333           published=0.333333333333           OK
+    WideExplore: leave-out-shared-anchor precision = 0/2
+    aux VerifyFirst n_nominees                           recomputed=3                        published=3                        OK
+    aux VerifyFirst n_reversal                           recomputed=3                        published=3                        OK
+    aux VerifyFirst precision_at_k                       recomputed=1.0                      published=1.0                      OK
+    VerifyFirst: leave-out-shared-anchor precision = 2/2
+    aux nominal audit quartets                           recomputed=6                        published=6                        OK
+    aux distinct simulations                             recomputed=5                        published=5                        OK
+    aux duplicated simulations                           recomputed=1                        published=1                        OK
+    duplicated: [('WideExplore', 'v02-anchor-0012'), ('VerifyFirst', 'v02-anchor-0012')]  sim_seed=484391145
+
+  --- power / sample-size derivation ---
+    z(1-alpha/8)                                         recomputed=2.497705                 published=2.497705                 OK
+    z(power=0.80)                                        recomputed=0.841621                 published=0.841621                 OK
+    anchor-level SD: delta_gap=0.144281  delta_speed=0.202794  delta_both=0.106392  i_lin=0.229079
+    n=18 detectable MDE (most sensitive contrast) = 0.0837 s
+    MDE=0.05 -> anchors=235 episodes=2820   (per contrast {'delta_gap': 93, 'delta_speed': 184, 'delta_both': 51, 'i_lin': 235})
+    MDE=0.10 -> anchors=59 episodes=708   (per contrast {'delta_gap': 24, 'delta_speed': 46, 'delta_both': 13, 'i_lin': 59})
+
+====================================================================================================
+INDEPENDENT RECOMPUTATION: ALL CHECKS PASS
+====================================================================================================

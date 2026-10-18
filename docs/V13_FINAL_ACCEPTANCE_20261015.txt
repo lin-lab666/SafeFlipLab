@@ -1,0 +1,16 @@
+SafeFlipLab FINAL ACCEPTANCE — 2026-10-15T12:19:22Z
+==================== FINAL (post-manifest) ====================
+   V01 main               launch= 264  outcome= 264
+   V01 voided 1st pilot   launch= 244  outcome= 244
+   V02 smoke              launch=  24  outcome=  24
+   V02 pilot              launch= 240  outcome= 240
+   2026-10-12 12:13:15.166276100 +0800  configs/formal_v01.json
+   2026-10-12 13:48:02.580832400 +0800  runs/episode_ledger.csv
+   V01 formal  EXIT=2
+   V02 smoke   EXIT=2
+   V02 pilot   EXIT=2
+   V02 subcommands: {doctor,smoke,pilot,report}
+====================================================================================================
+INDEPENDENT RECOMPUTATION: ALL CHECKS PASS
+====================================================================================================
+   manifest files: 188

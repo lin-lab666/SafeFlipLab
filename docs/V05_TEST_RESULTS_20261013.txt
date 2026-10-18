@@ -1,0 +1,220 @@
+test_anchor_bounds_tighten_intervened_dims (test_domain.TestAnchorDomain.test_anchor_bounds_tighten_intervened_dims) ... ok
+test_bounds_report (test_domain.TestAnchorDomain.test_bounds_report) ... ok
+test_illegal_anchor_gap (test_domain.TestAnchorDomain.test_illegal_anchor_gap) ... ok
+test_illegal_anchor_speed (test_domain.TestAnchorDomain.test_illegal_anchor_speed) ... ok
+test_legal_anchor (test_domain.TestAnchorDomain.test_legal_anchor) ... ok
+test_condition_00_is_identity (test_domain.TestQuartet.test_condition_00_is_identity) ... ok
+test_condition_01_only_speed (test_domain.TestQuartet.test_condition_01_only_speed) ... ok
+test_condition_10_only_gap (test_domain.TestQuartet.test_condition_10_only_gap) ... ok
+test_condition_11_both (test_domain.TestQuartet.test_condition_11_both) ... ok
+test_illegal_condition_raises (test_domain.TestQuartet.test_illegal_condition_raises) ... ok
+test_intervention_sizes (test_domain.TestQuartet.test_intervention_sizes) ... ok
+test_no_clipping_raises_instead (test_domain.TestQuartet.test_no_clipping_raises_instead)
+An anchor whose intervention would leave the upstream domain must ... ok
+test_other_dims_unchanged (test_domain.TestQuartet.test_other_dims_unchanged) ... ok
+test_quartet_has_all_four_conditions (test_domain.TestQuartet.test_quartet_has_all_four_conditions) ... ok
+test_formal_refuses_without_confirm (test_experiments.TestFormalGuard.test_formal_refuses_without_confirm) ... ok
+test_formal_refuses_wrong_budget (test_experiments.TestFormalGuard.test_formal_refuses_wrong_budget) ... ok
+test_different_run_id_same_key_billed_separately (test_experiments.TestMasterSeedIsolation.test_different_run_id_same_key_billed_separately)
+Two runs of the same (seed, method, anchor, rep, stream) key — e.g. the ... ok
+test_error_quartet_billed_and_re_run_costs_again (test_experiments.TestMasterSeedIsolation.test_error_quartet_billed_and_re_run_costs_again)
+An errored quartet is billed (the first condition errors and aborts ... ok
+test_force_reruns_and_bills_again (test_experiments.TestMasterSeedIsolation.test_force_reruns_and_bills_again)
+force=True is a deliberate re-run: it must re-launch and re-bill, ... ok
+test_formal_budget_exhaustion_blocks_extra_launch_without_free_retry (test_experiments.TestMasterSeedIsolation.test_formal_budget_exhaustion_blocks_extra_launch_without_free_retry)
+Once the frozen budget is reached, no further launch is permitted and ... ok
+test_launch_only_quartet_not_reused_and_re_run_bills_again (test_experiments.TestMasterSeedIsolation.test_launch_only_quartet_not_reused_and_re_run_bills_again)
+A launch without an outcome (interrupted) is billed but never treated ... ok
+test_seed_b_legal_resume_no_double_billing (test_experiments.TestMasterSeedIsolation.test_seed_b_legal_resume_no_double_billing)
+A legitimate resume of the SAME seed must reuse the completed quartet ... ok
+test_seed_b_must_launch_after_seed_a (test_experiments.TestMasterSeedIsolation.test_seed_b_must_launch_after_seed_a)
+Seed A completes a formal quartet; seed B (same phase, shared ledger) ... ok
+test_two_seeds_have_mutually_exclusive_completed_views (test_experiments.TestMasterSeedIsolation.test_two_seeds_have_mutually_exclusive_completed_views)
+Each seed's completed_quartets view contains only its own rows. ... ok
+test_completed_quartet_from_other_phase_is_not_resumed (test_experiments.TestPhaseIsolation.test_completed_quartet_from_other_phase_is_not_resumed)
+A completed quartet recorded under the smoke phase must NOT be ... ok
+test_pilot_audit_isolation (test_experiments.TestPilotFlow.test_pilot_audit_isolation) ... ok
+test_pilot_plan_must_close_exactly (test_experiments.TestPilotFlow.test_pilot_plan_must_close_exactly) ... ok
+test_pilot_resume_does_not_double_bill (test_experiments.TestPilotFlow.test_pilot_resume_does_not_double_bill) ... ok
+test_pilot_uses_exactly_240_episodes (test_experiments.TestPilotFlow.test_pilot_uses_exactly_240_episodes) ... ok
+test_smoke_determinism_check_matches (test_experiments.TestSmokeFlow.test_smoke_determinism_check_matches) ... ok
+test_smoke_is_resumable_without_double_billing (test_experiments.TestSmokeFlow.test_smoke_is_resumable_without_double_billing) ... ok
+test_smoke_refuses_over_cap (test_experiments.TestSmokeFlow.test_smoke_refuses_over_cap) ... ok
+test_smoke_uses_exactly_24_episodes (test_experiments.TestSmokeFlow.test_smoke_uses_exactly_24_episodes) ... ok
+test_selection_frozen_and_deterministic (test_experiments.TestVerifyFirstSelection.test_selection_frozen_and_deterministic) ... ok
+test_declared_fingerprint_match_accepted (test_formal_config.TestFrozenFormalConfig.test_declared_fingerprint_match_accepted) ... ok
+test_declared_fingerprint_mismatch_rejected (test_formal_config.TestFrozenFormalConfig.test_declared_fingerprint_mismatch_rejected) ... ok
+test_duplicate_seeds_rejected (test_formal_config.TestFrozenFormalConfig.test_duplicate_seeds_rejected) ... ok
+test_fingerprint_changes_when_design_changes (test_formal_config.TestFrozenFormalConfig.test_fingerprint_changes_when_design_changes) ... ok
+test_fingerprint_is_stable (test_formal_config.TestFrozenFormalConfig.test_fingerprint_is_stable) ... ok
+test_modified_budget_rejected (test_formal_config.TestFrozenFormalConfig.test_modified_budget_rejected) ... ok
+test_modified_plan_rejected (test_formal_config.TestFrozenFormalConfig.test_modified_plan_rejected) ... ok
+test_modified_seed_value_rejected (test_formal_config.TestFrozenFormalConfig.test_modified_seed_value_rejected) ... ok
+test_modified_simulator_cadence_rejected (test_formal_config.TestFrozenFormalConfig.test_modified_simulator_cadence_rejected) ... ok
+test_non_int_seeds_rejected (test_formal_config.TestFrozenFormalConfig.test_non_int_seeds_rejected) ... ok
+test_real_config_is_valid_and_frozen (test_formal_config.TestFrozenFormalConfig.test_real_config_is_valid_and_frozen) ... ok
+test_reordered_seeds_rejected (test_formal_config.TestFrozenFormalConfig.test_reordered_seeds_rejected) ... ok
+test_wrong_controller_policy_rejected (test_formal_config.TestFrozenFormalConfig.test_wrong_controller_policy_rejected) ... ok
+test_wrong_protocol_id_rejected (test_formal_config.TestFrozenFormalConfig.test_wrong_protocol_id_rejected) ... ok
+test_wrong_seed_count_rejected (test_formal_config.TestFrozenFormalConfig.test_wrong_seed_count_rejected) ... ok
+test_scaled_duplicate_still_rejected (test_formal_config.TestNonStrictScaledConfig.test_scaled_duplicate_still_rejected) ... ok
+test_scaled_non_int_still_rejected (test_formal_config.TestNonStrictScaledConfig.test_scaled_non_int_still_rejected) ... ok
+test_scaled_seed_list_accepted (test_formal_config.TestNonStrictScaledConfig.test_scaled_seed_list_accepted) ... ok
+test_scaled_wrong_count_still_rejected (test_formal_config.TestNonStrictScaledConfig.test_scaled_wrong_count_still_rejected) ... ok
+test_real_config_still_has_eight_frozen_seeds (test_formal_config.TestRealConfigFileUntouched.test_real_config_still_has_eight_frozen_seeds) ... ok
+test_execute_formal_phase_refuses_real_adapter_without_go (test_formal_scheduling.TestFormalSchedulingScaled.test_execute_formal_phase_refuses_real_adapter_without_go)
+The scheduler is directly callable, so it carries its OWN guard: with ... ok
+test_formal_audit_isolation_audit_stream_only (test_formal_scheduling.TestFormalSchedulingScaled.test_formal_audit_isolation_audit_stream_only)
+audit_results must aggregate AUDIT quartets only, not the discovery one. ... ok
+test_formal_cli_lock_preserved (test_formal_scheduling.TestFormalSchedulingScaled.test_formal_cli_lock_preserved)
+The CLI entry point must still refuse to run formal (RuntimeError lock). ... ok
+test_formal_full_resume_reports_zero_new_per_slice (test_formal_scheduling.TestFormalSchedulingScaled.test_formal_full_resume_reports_zero_new_per_slice)
+When every (method, seed) is already complete, a re-invocation must ... ok
+test_formal_halfway_resume_uses_cumulative_budget (test_formal_scheduling.TestFormalSchedulingScaled.test_formal_halfway_resume_uses_cumulative_budget)
+A legal half-way resume: one (seed, method) slice is already complete ... ok
+test_formal_nomination_frozen_before_audit (test_formal_scheduling.TestFormalSchedulingScaled.test_formal_nomination_frozen_before_audit)
+Audit launches use stream='audit' and never feed nomination back. ... ok
+test_formal_resume_does_not_double_bill_and_no_repeat_calls (test_formal_scheduling.TestFormalSchedulingScaled.test_formal_resume_does_not_double_bill_and_no_repeat_calls)
+Re-running the scheduler resumes completed quartets: same total billing, ... ok
+test_full_scaled_formal_scheduling (test_formal_scheduling.TestFormalSchedulingScaled.test_full_scaled_formal_scheduling) ... ok
+test_master_seed_isolation_in_formal (test_formal_scheduling.TestFormalSchedulingScaled.test_master_seed_isolation_in_formal)
+Each seed's completed-quartet view contains only its own rows. ... ok
+test_per_seed_method_manifests_do_not_overwrite (test_formal_scheduling.TestFormalSchedulingScaled.test_per_seed_method_manifests_do_not_overwrite) ... ok
+test_real_plan_is_400_discovery_plus_400_audit_per_method (test_formal_scheduling.TestRealFormalPlanClosesExactly.test_real_plan_is_400_discovery_plus_400_audit_per_method) ... ok
+test_budget_exhaustion (test_ledger.TestLedger.test_budget_exhaustion) ... ok
+test_duplicate_episode_keys_counted_once (test_ledger.TestLedger.test_duplicate_episode_keys_counted_once)
+Re-launching the same episode_key must not double-count budget. ... ok
+test_error_billed (test_ledger.TestLedger.test_error_billed) ... ok
+test_interrupted_billed (test_ledger.TestLedger.test_interrupted_billed) ... ok
+test_invalid_values_rejected (test_ledger.TestLedger.test_invalid_values_rejected) ... ok
+test_launch_consumes_budget_even_without_outcome (test_ledger.TestLedger.test_launch_consumes_budget_even_without_outcome) ... ok
+test_outcome_completed (test_ledger.TestLedger.test_outcome_completed) ... ok
+test_persistence_across_instances (test_ledger.TestLedger.test_persistence_across_instances) ... ok
+test_phases_are_independent (test_ledger.TestLedger.test_phases_are_independent) ... ok
+test_same_key_different_runs_counted_twice (test_ledger.TestLedger.test_same_key_different_runs_counted_twice) ... ok
+test_stream_recorded (test_ledger.TestLedger.test_stream_recorded) ... ok
+test_utc_now_iso_format (test_ledger.TestLedger.test_utc_now_iso_format) ... ok
+test_only_one_of_many_processes_can_reserve (test_ledger_concurrency.TestCrossProcessBudget.test_only_one_of_many_processes_can_reserve) ... ok
+test_duplicate_key_across_instances_refused (test_ledger_concurrency.TestMultiInstanceBudget.test_duplicate_key_across_instances_refused) ... ok
+test_ledger_has_single_header_and_is_append_only (test_ledger_concurrency.TestMultiInstanceBudget.test_ledger_has_single_header_and_is_append_only) ... ok
+test_stale_instance_refuses_after_other_writes (test_ledger_concurrency.TestMultiInstanceBudget.test_stale_instance_refuses_after_other_writes) ... ok
+test_two_instances_cannot_both_reserve_at_cap_one (test_ledger_concurrency.TestMultiInstanceBudget.test_two_instances_cannot_both_reserve_at_cap_one) ... ok
+test_record_launch_defaults_to_phase_scope (test_ledger_safety.TestAtomicReserve.test_record_launch_defaults_to_phase_scope) ... ok
+test_reserve_exhaustion_raises_within_scope (test_ledger_safety.TestAtomicReserve.test_reserve_exhaustion_raises_within_scope) ... ok
+test_reserve_honors_per_scope_independence (test_ledger_safety.TestAtomicReserve.test_reserve_honors_per_scope_independence)
+Scope A capped at 2 must not block scope B (formal's 8 seeds need this). ... ok
+test_reserve_rejects_duplicate_key_before_sim (test_ledger_safety.TestAtomicReserve.test_reserve_rejects_duplicate_key_before_sim) ... ok
+test_fresh_ledger_has_header_only_no_empty_row (test_ledger_safety.TestFreshLedgerInit.test_fresh_ledger_has_header_only_no_empty_row) ... ok
+test_legacy_activity_ledger_reads_compat (test_ledger_safety.TestFreshLedgerInit.test_legacy_activity_ledger_reads_compat)
+The real project ledger must be read correctly and must NOT be modified ... ok
+test_pre_fix_empty_row_ledger_reads_compat (test_ledger_safety.TestFreshLedgerInit.test_pre_fix_empty_row_ledger_reads_compat)
+A ledger written by the pre-fix init (header + one all-empty data row) ... ok
+test_pilot_resume_reopens_ledger_and_no_repeat_calls (test_ledger_safety.TestResumeReopensLedger.test_pilot_resume_reopens_ledger_and_no_repeat_calls) ... ok
+test_smoke_resume_reopens_ledger_and_no_repeat_calls (test_ledger_safety.TestResumeReopensLedger.test_smoke_resume_reopens_ledger_and_no_repeat_calls) ... ok
+test_complete_quartet_yields_paired_deltas (test_margins.TestMarginLoading.test_complete_quartet_yields_paired_deltas) ... ok
+test_conditions_from_different_runs_never_mixed (test_margins.TestMarginLoading.test_conditions_from_different_runs_never_mixed) ... ok
+test_incomplete_quartet_excluded_not_imputed (test_margins.TestMarginLoading.test_incomplete_quartet_excluded_not_imputed) ... ok
+test_missing_raw_file_counted_not_imputed (test_margins.TestMarginLoading.test_missing_raw_file_counted_not_imputed) ... ok
+test_no_ledger_returns_empty (test_margins.TestMarginLoading.test_no_ledger_returns_empty) ... ok
+test_other_phase_rows_ignored (test_margins.TestMarginLoading.test_other_phase_rows_ignored) ... ok
+test_same_key_second_run_is_replay_not_independent_evidence (test_margins.TestMarginLoading.test_same_key_second_run_is_replay_not_independent_evidence) ... ok
+test_two_distinct_keys_are_two_quartets (test_margins.TestMarginLoading.test_two_distinct_keys_are_two_quartets) ... ok
+test_unknown_phase_rejected (test_margins.TestMarginLoading.test_unknown_phase_rejected) ... ok
+test_report_with_data_includes_margin_section (test_margins.TestMarginReportIntegration.test_report_with_data_includes_margin_section) ... ok
+test_report_without_data_says_no_margin_numbers (test_margins.TestMarginReportIntegration.test_report_without_data_says_no_margin_numbers) ... ok
+test_note_marks_non_protocol (test_margins.TestMarginSummary.test_note_marks_non_protocol) ... ok
+test_quartet_rows_csv_shape (test_margins.TestMarginSummary.test_quartet_rows_csv_shape) ... ok
+test_summary_groups_by_method_and_stream (test_margins.TestMarginSummary.test_summary_groups_by_method_and_stream) ... ok
+test_audit_plan_uses_fresh_stream (test_methods.TestFormalBudget.test_audit_plan_uses_fresh_stream) ... ok
+test_audit_seeds_never_reused_from_discovery (test_methods.TestFormalBudget.test_audit_seeds_never_reused_from_discovery)
+Structural isolation: audit jobs carry the audit stream tag, so the ... ok
+test_budget_check_rejects_partial_plans (test_methods.TestFormalBudget.test_budget_check_rejects_partial_plans) ... ok
+test_formal_plans_close_exactly (test_methods.TestFormalBudget.test_formal_plans_close_exactly) ... ok
+test_verify_stage2_plan (test_methods.TestFormalBudget.test_verify_stage2_plan) ... ok
+test_wide_discovery_plan (test_methods.TestFormalBudget.test_wide_discovery_plan) ... ok
+test_add_quartet_requires_complete (test_methods.TestQuartetValidation.test_add_quartet_requires_complete) ... ok
+test_empty_pool_rejected (test_methods.TestTieBreaks.test_empty_pool_rejected) ... ok
+test_select_top_cannot_over_nominate (test_methods.TestTieBreaks.test_select_top_cannot_over_nominate) ... ok
+test_verify_final_key_uses_valid_n_as_tiebreak (test_methods.TestTieBreaks.test_verify_final_key_uses_valid_n_as_tiebreak) ... ok
+test_verify_select_uses_single_factor_deltas_as_tiebreak (test_methods.TestTieBreaks.test_verify_select_uses_single_factor_deltas_as_tiebreak) ... ok
+test_wide_nomination_orders_by_delta_both (test_methods.TestTieBreaks.test_wide_nomination_orders_by_delta_both) ... ok
+test_wide_tie_break_first_seen_then_anchor_id (test_methods.TestTieBreaks.test_wide_tie_break_first_seen_then_anchor_id) ... ok
+test_config_rule_strings_equal_frozen (test_protocol_rules.TestFrozenRuleDescriptions.test_config_rule_strings_equal_frozen) ... ok
+test_fingerprint_covers_rule_text (test_protocol_rules.TestFrozenRuleDescriptions.test_fingerprint_covers_rule_text) ... ok
+test_frozen_design_carries_rule_strings (test_protocol_rules.TestFrozenRuleDescriptions.test_frozen_design_carries_rule_strings) ... ok
+test_real_config_valid_and_rules_consistent (test_protocol_rules.TestFrozenRuleDescriptions.test_real_config_valid_and_rules_consistent) ... ok
+test_rule_text_drift_is_rejected (test_protocol_rules.TestFrozenRuleDescriptions.test_rule_text_drift_is_rejected) ... ok
+test_all_three_rule_functions_present (test_protocol_rules.TestMethodsConsistency.test_all_three_rule_functions_present) ... ok
+test_drift_surfaces_through_config_validation (test_protocol_rules.TestMethodsConsistency.test_drift_surfaces_through_config_validation) ... ok
+test_implementation_drift_is_detected (test_protocol_rules.TestMethodsConsistency.test_implementation_drift_is_detected)
+If the methods sort key changes without the declared rule (or vice ... ok
+test_non_test_double_refused_with_relaxed_design (test_protocol_rules.TestStrictDesignBoundary.test_non_test_double_refused_with_relaxed_design) ... ok
+test_none_adapter_refused_with_relaxed_design (test_protocol_rules.TestStrictDesignBoundary.test_none_adapter_refused_with_relaxed_design) ... ok
+test_test_double_allowed_with_relaxed_design (test_protocol_rules.TestStrictDesignBoundary.test_test_double_allowed_with_relaxed_design) ... ok
+test_formal_refused_with_both_flags_but_not_executed (test_report_cli.TestCliGuards.test_formal_refused_with_both_flags_but_not_executed) ... REFUSED: formal driver is implemented but NOT executed by this build; run it only after human review of pilot results. The real scheduler is _execute_formal_phase. Plan: {"status": "authorised-by-flags", "methods": ["WideExplore", "VerifyFirst"], "master_seeds": 8, "episodes_per_method_seed": 800, "total": 12800}
+ok
+test_formal_refused_with_wrong_budget (test_report_cli.TestCliGuards.test_formal_refused_with_wrong_budget) ... REFUSED: the formal phase needs explicit human GO. It requires BOTH --confirm and --max-episodes 12800. Nothing was launched.
+ok
+test_formal_refused_without_confirm (test_report_cli.TestCliGuards.test_formal_refused_without_confirm) ... REFUSED: the formal phase needs explicit human GO. It requires BOTH --confirm and --max-episodes 12800. Nothing was launched.
+ok
+test_pilot_over_cap_refused (test_report_cli.TestCliGuards.test_pilot_over_cap_refused) ... pilot budget is capped at 240 episodes by the protocol
+ok
+test_smoke_over_cap_refused (test_report_cli.TestCliGuards.test_smoke_over_cap_refused) ... smoke budget is capped at 24 episodes by the protocol
+ok
+test_empty_phase_report_has_no_numbers (test_report_cli.TestReportNoData.test_empty_phase_report_has_no_numbers) ... ok
+test_report_from_ledger (test_report_cli.TestReportWithData.test_report_from_ledger) ... ok
+test_cross_run_id_is_a_replay_not_primary (test_report_multiseed.TestMultiMasterSeedReport.test_cross_run_id_is_a_replay_not_primary) ... ok
+test_discovery_and_audit_are_strictly_separate (test_report_multiseed.TestMultiMasterSeedReport.test_discovery_and_audit_are_strictly_separate) ... ok
+test_incomplete_quartet_recorded_not_counted (test_report_multiseed.TestMultiMasterSeedReport.test_incomplete_quartet_recorded_not_counted) ... ok
+test_no_cross_seed_mixing (test_report_multiseed.TestMultiMasterSeedReport.test_no_cross_seed_mixing) ... ok
+test_per_seed_method_structure_and_audit_results (test_report_multiseed.TestMultiMasterSeedReport.test_per_seed_method_structure_and_audit_results) ... ok
+test_two_master_seeds_method_summary_not_merged_by_seed (test_report_multiseed.TestMultiMasterSeedReport.test_two_master_seeds_method_summary_not_merged_by_seed)
+The pooled method/stream summary is fine, but per-seed entries exist. ... ok
+test_two_master_seeds_yield_two_quartets (test_report_multiseed.TestMultiMasterSeedReport.test_two_master_seeds_yield_two_quartets) ... ok
+test_all_anchors_are_quartet_legal (test_runner.TestGenerator.test_all_anchors_are_quartet_legal) ... ok
+test_anchor_ids_are_stable_indices (test_runner.TestGenerator.test_anchor_ids_are_stable_indices) ... ok
+test_different_master_seeds_differ (test_runner.TestGenerator.test_different_master_seeds_differ) ... ok
+test_generator_extends_lazily_and_consistently (test_runner.TestGenerator.test_generator_extends_lazily_and_consistently) ... ok
+test_negative_index_rejected (test_runner.TestGenerator.test_negative_index_rejected) ... ok
+test_save_stream (test_runner.TestGenerator.test_save_stream) ... ok
+test_stream_draws_recorded (test_runner.TestGenerator.test_stream_draws_recorded) ... ok
+test_stream_is_deterministic (test_runner.TestGenerator.test_stream_is_deterministic) ... ok
+test_audit_stream_uses_different_seed (test_runner.TestRunnerWithFakeAdapter.test_audit_stream_uses_different_seed) ... ok
+test_budget_exhaustion_blocks_launch (test_runner.TestRunnerWithFakeAdapter.test_budget_exhaustion_blocks_launch) ... ok
+test_conditions_are_the_declared_interventions (test_runner.TestRunnerWithFakeAdapter.test_conditions_are_the_declared_interventions) ... ok
+test_error_is_billed_and_raised (test_runner.TestRunnerWithFakeAdapter.test_error_is_billed_and_raised) ... ok
+test_quartet_runs_four_episodes_with_shared_seed (test_runner.TestRunnerWithFakeAdapter.test_quartet_runs_four_episodes_with_shared_seed) ... ok
+test_raw_records_written (test_runner.TestRunnerWithFakeAdapter.test_raw_records_written) ... ok
+test_anchor_id_format (test_seeds.TestSeeds.test_anchor_id_format) ... ok
+test_anchor_stream_seed_stable (test_seeds.TestSeeds.test_anchor_stream_seed_stable) ... ok
+test_check_seed_rejects_bad_values (test_seeds.TestSeeds.test_check_seed_rejects_bad_values) ... ok
+test_derivation_is_deterministic (test_seeds.TestSeeds.test_derivation_is_deterministic) ... ok
+test_derivation_separates_labels (test_seeds.TestSeeds.test_derivation_separates_labels) ... ok
+test_dev_seed_value (test_seeds.TestSeeds.test_dev_seed_value) ... ok
+test_formal_master_seeds_frozen (test_seeds.TestSeeds.test_formal_master_seeds_frozen) ... ok
+test_formal_total_budget (test_seeds.TestSeeds.test_formal_total_budget) ... ok
+test_no_python_hash_dependency (test_seeds.TestSeeds.test_no_python_hash_dependency) ... ok
+test_run_id_unique_and_readable (test_seeds.TestSeeds.test_run_id_unique_and_readable) ... ok
+test_seed_range (test_seeds.TestSeeds.test_seed_range) ... ok
+test_sim_seed_audit_fresh (test_seeds.TestSeeds.test_sim_seed_audit_fresh) ... ok
+test_sim_seed_rejects_bad_stream (test_seeds.TestSeeds.test_sim_seed_rejects_bad_stream) ... ok
+test_sim_seed_repetitions_differ (test_seeds.TestSeeds.test_sim_seed_repetitions_differ) ... ok
+test_sim_seed_shared_across_conditions (test_seeds.TestSeeds.test_sim_seed_shared_across_conditions)
+The quartet's four conditions must share one sim_seed: the ... ok
+test_empty_is_none_not_zero (test_stats.TestAggregate.test_empty_is_none_not_zero) ... ok
+test_incomplete_quartets_excluded (test_stats.TestAggregate.test_incomplete_quartets_excluded) ... ok
+test_means_and_counts (test_stats.TestAggregate.test_means_and_counts) ... ok
+test_summarise_conditions_matches (test_stats.TestAggregate.test_summarise_conditions_matches) ... ok
+test_series_per_condition (test_stats.TestPairedSeries.test_series_per_condition) ... ok
+test_series_rejects_condition_00 (test_stats.TestPairedSeries.test_series_rejects_condition_00) ... ok
+test_all_zero (test_stats.TestQuartetMetrics.test_all_zero) ... ok
+test_incomplete_rejected (test_stats.TestQuartetMetrics.test_incomplete_rejected) ... ok
+test_interaction_sign (test_stats.TestQuartetMetrics.test_interaction_sign) ... ok
+test_rescue_pair (test_stats.TestQuartetMetrics.test_rescue_pair) ... ok
+test_reverse_pair (test_stats.TestQuartetMetrics.test_reverse_pair) ... ok
+
+----------------------------------------------------------------------
+Ran 183 tests in 535.141s
+
+OK
+EXIT_CODE=0

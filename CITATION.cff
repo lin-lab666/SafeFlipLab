@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use SafeFlipLab in your research, please cite this software."
+type: software
+title: "SafeFlipLab"
+abstract: "Budgeted counterfactual safety-reversal testing for simplified autonomous-driving simulations: four-condition paired quartets (front gap / ego speed interventions) around legal anchors, WideExplore vs VerifyFirst under fixed episode budgets, and independent held-out audits."
+authors:
+  - family-names: "吴"
+    given-names: "昊霖"
+version: "0.1.0"
+license: Apache-2.0
+repository-code: "not published"
+keywords:
+  - "autonomous driving"
+  - "counterfactual testing"
+  - "metamorphic testing"
+  - "simulation"
+  - "safety reversal"
+  - "reproducibility"
+references:
+  - type: software
+    title: "CornerCaseLab"
+    version: "0.3.0"
+    license: Apache-2.0
+    repository-code: "https://github.com/lin-lab666/CornerCaseLab"
+    notes: "Simulation interface reused as an installed dependency (scenario schema, HighwayEnv adapter, pilot controllers)."

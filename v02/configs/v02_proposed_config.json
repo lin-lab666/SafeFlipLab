@@ -1,0 +1,27 @@
+{
+  "protocol": "SafeFlipLab-v02",
+  "schema_id": "sfl-v02-param-schema-v1",
+  "status": "PROPOSED",
+  "note": "ALL entries PROPOSED/UNSET - NOT approved, NOT frozen. UNSET entries have value=null on purpose. No arbitrary default is provided anywhere.",
+  "parameters": {
+    "gap_intervention_m": {"status": "PROPOSED", "value": 2.0, "note": "carried over from V01 for continuity; PROPOSED for V02, not frozen"},
+    "speed_intervention_mps": {"status": "PROPOSED", "value": 1.0, "note": "carried over from V01 for continuity; PROPOSED for V02, not frozen"},
+    "tau_cap_s": {"status": "UNSET", "value": null, "note": "right-censoring ceiling - requires human decision"},
+    "tau_low_threshold_s": {"status": "UNSET", "value": null, "note": "M2 threshold tau - requires human decision"},
+    "delta_eq_s": {"status": "UNSET", "value": null, "note": "reversal margin - requires human decision"},
+    "s2_min_s2": {"status": "UNSET", "value": null, "note": "G3a threshold - set after technical pilot"},
+    "n_events_min": {"status": "UNSET", "value": null, "note": "G3b threshold - set after technical pilot"},
+    "bootstrap_resamples": {"status": "PROPOSED", "value": 10000, "note": "PROPOSED resample count"},
+    "alpha": {"status": "PROPOSED", "value": 0.05, "note": "PROPOSED two-sided alpha"},
+    "dev_seeds": {"status": "PROPOSED", "value": [20261011], "note": "TP-1 dev-seed set (reuses V01 dev seed, dev only). TP-2 would need a second seed, currently not supplied."},
+    "no_candidate_policy": {"status": "PROPOSED", "value": "assign_cap", "note": "primary (b); sensitivity (a) computed in parallel"},
+    "i_log_floor_phi_s": {"status": "UNSET", "value": null, "note": "no floored-log floor approved; pure I_log undefined on 0/inf/missing"},
+    "sampling_assumption_basis": {"status": "PROPOSED", "value": "UNPROVEN", "note": "sign-flip/max-T validity not established => confirmatory tests PENDING"},
+    "perturbation_lead_speed_delta": {"status": "UNSET", "value": null, "note": "P1 half-width - requires human decision"},
+    "perturbation_front_gap_delta": {"status": "UNSET", "value": null, "note": "P2 half-width - requires human decision"},
+    "perturbation_lead_decel_prob": {"status": "UNSET", "value": null, "note": "P3 probability - requires human decision"},
+    "perturbation_lead_decel_mag": {"status": "UNSET", "value": null, "note": "P3 magnitude - requires human decision"},
+    "perturbation_lead_decel_time_s": {"status": "UNSET", "value": null, "note": "P3 start time - requires human decision"},
+    "perturbation_ego_speed_delta": {"status": "UNSET", "value": null, "note": "P4 half-width - requires human decision"}
+  }
+}

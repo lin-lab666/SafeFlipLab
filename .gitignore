@@ -1,0 +1,27 @@
+# Bytecode / caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+
+# Virtual environment
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+
+# Runtime locks (regenerated on use)
+*.lock
+
+# Raw simulation evidence is intentionally NOT part of this release
+# (episode ledgers, raw per-episode JSON and their backups stay with the
+# project owner; see RELEASE_NOTES.md "Data availability").
+runs/
+v02/runs/
+
+# Process backups
+*.pre_margin_backup
+*.stale_zero_backup

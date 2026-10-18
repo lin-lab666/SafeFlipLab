@@ -1,0 +1,32 @@
+SafeFlipLab FINAL CLOSEOUT ACCEPTANCE — 2026-10-16T11:36:12Z
+================================================================
+1) LEDGERS (no new episodes)
+   V01 authoritative      launch= 264 outcome= 264 orphan=0  by_phase={'smoke': 24, 'pilot': 240}
+   V01 voided 1st pilot   launch= 244 outcome= 244 orphan=0  by_phase={'smoke': 24, 'pilot': 220}
+   V02 smoke              launch=  24 outcome=  24 orphan=0  by_phase={'smoke': 24}
+   V02 pilot              launch= 240 outcome= 240 orphan=0  by_phase={'pilot': 240}
+   raw json: authoritative=264 voided=220 v02smoke=24 v02pilot=240 TOTAL=748
+
+2) FROZEN FILES untouched
+   2026-10-12 12:13:15  configs/formal_v01.json
+   2026-10-15 17:04:58  v02/configs/v02_frozen_v1.json
+
+3) SAFETY GATES (must refuse)
+   V01 formal          EXIT=2
+   V02 smoke           EXIT=2
+   V02 pilot           EXIT=2
+
+4) INDEPENDENT RECOMPUTATION (V01+V02, imports no reporting module)
+INDEPENDENT RECOMPUTATION: ALL CHECKS PASS
+   EXIT=0
+
+5) MANIFEST GATE
+MANIFEST COUNT CHECK: PASS  (files=199, bytes=3330666, categories=15, key_hash_rows=13)
+   EXIT=0
+
+6) TEST EVIDENCE (recorded runs)
+Ran 227 tests in 317.922s OK <- V01
+Ran 143 tests in 8.966s OK <- V02
+
+7) SCHEMA FINGERPRINT (header SHA-256)
+   schema fingerprints verified (smoke+pilot); header sha256=24eeb3915d91bcec...

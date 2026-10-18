@@ -1,0 +1,110 @@
+==============================================================================
+A. PILOT DECOMPOSITION (from the 21-column ledger)
+==============================================================================
+  ledger data rows            : 480  (launch 240 + outcome 240)
+  orphan launches             : 0
+  budget_scope                : {'v02-pilot': 240}
+  by method                   : {'Shared': 216, 'WideExplore': 12, 'VerifyFirst': 12}
+  by stream                   : {'discovery': 216, 'audit': 24}
+  primary  = discovery/Shared : 216  anchors=18
+  auxiliary                    : 24  ({'WideExplore': 12, 'VerifyFirst': 12})
+  check 216+24=240             : 240
+  per-condition counts (all)   : {'00': 60, '10': 60, '01': 60, '11': 60}
+  primary per-condition        : {'00': 54, '10': 54, '01': 54, '11': 54}  -> primary quartets = 54
+
+==============================================================================
+B. PRIMARY: anchor-level contrasts, recomputed from raw trajectory records
+==============================================================================
+  primary episodes parsed      : 216  layer-1/2 = {'FINITE': 216}
+  complete primary quartets    : 54   anchors = 18
+  quartets per anchor          : [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3]
+
+  contrast       n      point     CI low    CI high  excl0
+  delta_gap     18    +0.0127    -0.0525    +0.0769  no   published_match=True
+  delta_speed   18    +0.0327    -0.0589    +0.1243  no   published_match=True
+  delta_both    18    +0.0030    -0.0436    +0.0526  no   published_match=True
+  i_lin         18    -0.0424    -0.1465    +0.0613  no   published_match=True
+
+==============================================================================
+C. ANCHOR-LEVEL SIGN HETEROGENEITY (descriptive, pre-specified)
+==============================================================================
+  contrast      neg  pos zero      mean  drop3pos      min      max
+  delta_gap       8   10    0   +0.0127   -0.0307   -0.297   +0.293
+  delta_speed    10    8    0   +0.0327   -0.0313   -0.435   +0.394
+  delta_both     10    8    0   +0.0030   -0.0327   -0.198   +0.215
+  i_lin          10    8    0   -0.0424   -0.1088   -0.563   +0.523
+
+  identical trace hashes for identical (sim_seed, scenario) pairs (determinism side-evidence): 0 pair(s)
+
+==============================================================================
+D. REGISTERED SECONDARY ENDPOINT M2 (share of steps with TTC < 1.0 s) -- smaller = safer
+==============================================================================
+  complete M2 quartets = 54   per-condition mean share = {'00': 0.02339, '10': 0.02525, '01': 0.0127, '11': 0.01717}
+  contrast          point     CI low    CI high
+  delta_gap      +0.00186   -0.02246   +0.02618   published_point=-0.004675659769928584
+  delta_speed    -0.01069   -0.03283   +0.00506   published_point=-0.011732418079255756
+  delta_both     -0.00623   -0.02453   +0.00639   published_point=-0.0072426979072549086
+  i_lin          +0.00261   -0.02350   +0.03035   published_point=0.009165379941929432
+
+==============================================================================
+E. AUXILIARY ALLOCATION COMPARISON + AUDIT SEED-REUSE IMPACT
+==============================================================================
+  audit quartets, recomputed:
+    VerifyFirst  v02-anchor-0009  delta_both= -0.3793 reversal=True | sim_seed=1903551010
+    VerifyFirst  v02-anchor-0012  delta_both= -0.4975 reversal=True | sim_seed=484391145
+    VerifyFirst  v02-anchor-0014  delta_both= -0.0963 reversal=True | sim_seed=4033981449
+    WideExplore  v02-anchor-0003  delta_both= +0.0266 reversal=False | sim_seed=815357684
+    WideExplore  v02-anchor-0008  delta_both= +0.2825 reversal=False | sim_seed=2954206337
+    WideExplore  v02-anchor-0012  delta_both= -0.4975 reversal=True | sim_seed=484391145
+
+  duplicate-simulation detection across the two methods:
+    *** IDENTICAL SIMULATION shared by: [('WideExplore', 'v02-anchor-0012'), ('VerifyFirst', 'v02-anchor-0012')]  trace=54557658f06687d79aa2ccb05d71f083a2cc03e8f6861e684494fc12e9fe0bd0
+  distinct audit simulations = 5 of 6 nominal quartets (24 billed episodes); duplicated quartets = 1
+
+  leave-the-shared-anchor-out sensitivity (historically, the shared anchor was v02-anchor-0012):
+    WideExplore  full: 1/3 = 0.333   dropping anchor-0012: 0/2 = 0.000
+    VerifyFirst  full: 3/3 = 1.000   dropping anchor-0012: 2/2 = 1.000
+
+==============================================================================
+F. FORMAL SAMPLE SIZE -- derivation reproduced (launches nothing)
+==============================================================================
+  formula: n_anchors = ceil( (z_(1-a/2) + z_power)^2 * sd^2 / MDE^2 )
+  inputs : alpha=0.05  family=4 (4 contrasts)  alpha_per_contrast=0.0125
+           power=0.80  z_(1-a/2)=2.497705  z_power=0.841621  sum=3.339327
+           (Holm worst case == Bonferroni first step == alpha/4; not max-T)
+
+  contrast           sd        var  MDE@n=18
+  delta_gap      0.1443   0.020817    0.1136
+  delta_speed    0.2028   0.041125    0.1596
+  delta_both     0.1064   0.011319    0.0837
+  i_lin          0.2291   0.052477    0.1803
+
+     MDE |  delta_gap delta_speed delta_both      i_lin |   max  episodes
+    0.05 |         93        184         51        235 |   235      2820
+    0.10 |         24         46         13         59 |    59       708
+    0.15 |         11         21          6         27 |    27       324
+    0.20 |          6         12          4         15 |    15       180
+    0.30 |          3          6          2          7 |     7        84
+
+  cross-check, published grid (docs/V02_SAMPLE_SIZE_DERIVATION.md):
+    MDE 0.05 -> max 235 anchors / 2820 episodes ;  MDE 0.10 -> max 59 / 708
+    n=18 most-sensitive contrast (delta_both) detectable MDE = 0.0837 s
+
+==============================================================================
+G. SIGN-CONVENTION TABLE (the one place mixing up signs would be fatal)
+==============================================================================
+  endpoint   contrast definition              'protective' direction
+  M1 (min-TTC)  D = X(treat) - X(control)     D > 0   (larger margin = safer)
+  M2 (share)    D = X(treat) - X(control)     D < 0   (smaller share = safer)
+  binary        reverse = 1{Y00=0 and Y11=1}  Y = ego_collision in {0,1}
+  -- so the same numerical sign means OPPOSITE things for M1 and M2; both
+     tables in the report carry an explicit note to that effect.
+
+  observed (M1): D_gap=+0.0127 D_speed=+0.0327 D_both=+0.0030 I_lin=-0.0424
+  observed (M2): D_gap=-0.0047 D_speed=-0.0117 D_both=-0.0072 I_lin=+0.0092
+  => M1 positive and M2 negative BOTH mean 'protective'; the two endpoints agree
+     in the safety interpretation, not in raw sign.
+
+==============================================================================
+INDEPENDENT CHECK: all four M1 contrasts reproduce exactly = True
+==============================================================================

@@ -1,0 +1,6 @@
+master_seed,method,stream,anchor_id,repetition,Y00,Y10,Y01,Y11,delta_both,delta_gap,delta_speed,interaction,reverse,rescue,run_id
+20261011,VerifyFirst,discovery,anchor-0000,0,0,0,0,0,0.0,0.0,0.0,0.0,0,0,smoke_WideExplore_20261011_20261012T051711439+0000_df65c218
+20261011,VerifyFirst,discovery,anchor-0001,0,0,0,0,0,0.0,0.0,0.0,0.0,0,0,smoke_WideExplore_20261011_20261012T051715001+0000_e952bfec
+20261011,WideExplore,discovery,anchor-0000,0,0,0,0,0,0.0,0.0,0.0,0.0,0,0,smoke_WideExplore_20261011_20261012T051659890+0000_c7bbee5f
+20261011,WideExplore,discovery,anchor-0001,0,0,0,0,0,0.0,0.0,0.0,0.0,0,0,smoke_WideExplore_20261011_20261012T051703569+0000_cae08340
+20261011,WideExplore,discovery,anchor-0002,0,0,0,0,0,0.0,0.0,0.0,0.0,0,0,smoke_WideExplore_20261011_20261012T051707374+0000_44245d0e

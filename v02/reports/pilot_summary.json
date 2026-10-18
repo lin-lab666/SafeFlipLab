@@ -1,0 +1,921 @@
+{
+  "auxiliary_audit_quartets": {
+    "VerifyFirst": [
+      {
+        "00": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.352447,
+            "front_gap": 26.705092,
+            "front_speed": 20.145422,
+            "ramp_speed": 15.422831,
+            "ramp_target_speed": 25.92861,
+            "ramp_x": 93.36907
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 42,
+          "n_normal": 50,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092201397+0000_aaa27267\\v02-anchor-0014_rep0_00.json",
+          "termination": "goal",
+          "value": 1.23469901504898
+        },
+        "01": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 23.352447,
+            "front_gap": 26.705092,
+            "front_speed": 20.145422,
+            "ramp_speed": 15.422831,
+            "ramp_target_speed": 25.92861,
+            "ramp_x": 93.36907
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 37,
+          "n_normal": 54,
+          "n_steps": 91,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092201397+0000_aaa27267\\v02-anchor-0014_rep0_01.json",
+          "termination": "goal",
+          "value": 1.3254047332430232
+        },
+        "10": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.352447,
+            "front_gap": 28.705092,
+            "front_speed": 20.145422,
+            "ramp_speed": 15.422831,
+            "ramp_target_speed": 25.92861,
+            "ramp_x": 93.36907
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 41,
+          "n_normal": 51,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092201397+0000_aaa27267\\v02-anchor-0014_rep0_10.json",
+          "termination": "goal",
+          "value": 0.8815030982087703
+        },
+        "11": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 23.352447,
+            "front_gap": 28.705092,
+            "front_speed": 20.145422,
+            "ramp_speed": 15.422831,
+            "ramp_target_speed": 25.92861,
+            "ramp_x": 93.36907
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 40,
+          "n_normal": 52,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092201397+0000_aaa27267\\v02-anchor-0014_rep0_11.json",
+          "termination": "goal",
+          "value": 1.1383650643472842
+        },
+        "anchor_id": "v02-anchor-0014",
+        "anchor_index": 14,
+        "base_scenario": {
+          "ego_speed": 24.352447,
+          "front_gap": 26.705092,
+          "front_speed": 20.145422,
+          "ramp_speed": 15.422831,
+          "ramp_target_speed": 25.92861,
+          "ramp_x": 93.36907
+        },
+        "delta_both": -0.09633395070169581,
+        "delta_gap": -0.3531959168402098,
+        "delta_speed": 0.09070571819404316,
+        "i_lin": 0.16615624794447093,
+        "pair_status": "OK",
+        "perturbation": {
+          "ego_speed": -0.095674,
+          "front_gap": -0.847986,
+          "front_speed": 1.035672
+        },
+        "repetition": 0,
+        "sim_seed": 4033981449,
+        "stream": "audit",
+        "usable": true
+      },
+      {
+        "00": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.140885,
+            "front_gap": 37.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 40,
+          "n_normal": 50,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092206297+0000_9141e5c1\\v02-anchor-0012_rep0_00.json",
+          "termination": "goal",
+          "value": 1.1519338620221526
+        },
+        "01": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 23.140885,
+            "front_gap": 37.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 41,
+          "n_normal": 49,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092206297+0000_9141e5c1\\v02-anchor-0012_rep0_01.json",
+          "termination": "goal",
+          "value": 1.2163878923540379
+        },
+        "10": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.140885,
+            "front_gap": 39.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 41,
+          "n_normal": 49,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092206297+0000_9141e5c1\\v02-anchor-0012_rep0_10.json",
+          "termination": "goal",
+          "value": 0.5212940386466944
+        },
+        "11": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 23.140885,
+            "front_gap": 39.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 39,
+          "n_normal": 51,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092206297+0000_9141e5c1\\v02-anchor-0012_rep0_11.json",
+          "termination": "goal",
+          "value": 0.6544468660323418
+        },
+        "anchor_id": "v02-anchor-0012",
+        "anchor_index": 12,
+        "base_scenario": {
+          "ego_speed": 24.140885,
+          "front_gap": 37.120183,
+          "front_speed": 17.859437,
+          "ramp_speed": 27.911755,
+          "ramp_target_speed": 24.470266,
+          "ramp_x": 122.993428
+        },
+        "delta_both": -0.49748699598981083,
+        "delta_gap": -0.6306398233754582,
+        "delta_speed": 0.06445403033188524,
+        "i_lin": 0.06869879705376225,
+        "pair_status": "OK",
+        "perturbation": {
+          "ego_speed": -0.138341,
+          "front_gap": 2.707841,
+          "front_speed": -1.056684
+        },
+        "repetition": 0,
+        "sim_seed": 484391145,
+        "stream": "audit",
+        "usable": true
+      },
+      {
+        "00": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 25.176493,
+            "front_gap": 32.008965,
+            "front_speed": 20.479203,
+            "ramp_speed": 27.583848,
+            "ramp_target_speed": 23.509384,
+            "ramp_x": 127.322154
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 33,
+          "n_normal": 50,
+          "n_steps": 83,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092211292+0000_be48709f\\v02-anchor-0009_rep0_00.json",
+          "termination": "goal",
+          "value": 1.6084451439226328
+        },
+        "01": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.176493,
+            "front_gap": 32.008965,
+            "front_speed": 20.479203,
+            "ramp_speed": 27.583848,
+            "ramp_target_speed": 23.509384,
+            "ramp_x": 127.322154
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 37,
+          "n_normal": 46,
+          "n_steps": 83,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092211292+0000_be48709f\\v02-anchor-0009_rep0_01.json",
+          "termination": "goal",
+          "value": 1.4830694889102594
+        },
+        "10": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 25.176493,
+            "front_gap": 34.008965,
+            "front_speed": 20.479203,
+            "ramp_speed": 27.583848,
+            "ramp_target_speed": 23.509384,
+            "ramp_x": 127.322154
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 35,
+          "n_normal": 47,
+          "n_steps": 82,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092211292+0000_be48709f\\v02-anchor-0009_rep0_10.json",
+          "termination": "goal",
+          "value": 1.436836966549368
+        },
+        "11": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.176493,
+            "front_gap": 34.008965,
+            "front_speed": 20.479203,
+            "ramp_speed": 27.583848,
+            "ramp_target_speed": 23.509384,
+            "ramp_x": 127.322154
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 33,
+          "n_normal": 49,
+          "n_steps": 82,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_VerifyFirst_2279189195_20261015T092211292+0000_be48709f\\v02-anchor-0009_rep0_11.json",
+          "termination": "goal",
+          "value": 1.2291822238090846
+        },
+        "anchor_id": "v02-anchor-0009",
+        "anchor_index": 9,
+        "base_scenario": {
+          "ego_speed": 25.176493,
+          "front_gap": 32.008965,
+          "front_speed": 20.479203,
+          "ramp_speed": 27.583848,
+          "ramp_target_speed": 23.509384,
+          "ramp_x": 127.322154
+        },
+        "delta_both": -0.37926292011354823,
+        "delta_gap": -0.17160817737326473,
+        "delta_speed": -0.12537565501237347,
+        "i_lin": -0.08227908772791004,
+        "pair_status": "OK",
+        "perturbation": {
+          "ego_speed": -0.063826,
+          "front_gap": 1.272192,
+          "front_speed": 1.328054
+        },
+        "repetition": 0,
+        "sim_seed": 1903551010,
+        "stream": "audit",
+        "usable": true
+      }
+    ],
+    "WideExplore": [
+      {
+        "00": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 28.926549,
+            "front_gap": 30.784909,
+            "front_speed": 18.042045,
+            "ramp_speed": 28.022552,
+            "ramp_target_speed": 21.756147,
+            "ramp_x": 97.663961
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 42,
+          "n_normal": 50,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092148133+0000_522f4d5b\\v02-anchor-0008_rep0_00.json",
+          "termination": "goal",
+          "value": 1.00089614532167
+        },
+        "01": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 27.926549,
+            "front_gap": 30.784909,
+            "front_speed": 18.042045,
+            "ramp_speed": 28.022552,
+            "ramp_target_speed": 21.756147,
+            "ramp_x": 97.663961
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 41,
+          "n_normal": 51,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092148133+0000_522f4d5b\\v02-anchor-0008_rep0_01.json",
+          "termination": "goal",
+          "value": 1.0674745851198049
+        },
+        "10": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 28.926549,
+            "front_gap": 32.784909,
+            "front_speed": 18.042045,
+            "ramp_speed": 28.022552,
+            "ramp_target_speed": 21.756147,
+            "ramp_x": 97.663961
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 40,
+          "n_normal": 51,
+          "n_steps": 91,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092148133+0000_522f4d5b\\v02-anchor-0008_rep0_10.json",
+          "termination": "goal",
+          "value": 1.215860341757329
+        },
+        "11": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 27.926549,
+            "front_gap": 32.784909,
+            "front_speed": 18.042045,
+            "ramp_speed": 28.022552,
+            "ramp_target_speed": 21.756147,
+            "ramp_x": 97.663961
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 42,
+          "n_normal": 49,
+          "n_steps": 91,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092148133+0000_522f4d5b\\v02-anchor-0008_rep0_11.json",
+          "termination": "goal",
+          "value": 1.283403786211029
+        },
+        "anchor_id": "v02-anchor-0008",
+        "anchor_index": 8,
+        "base_scenario": {
+          "ego_speed": 28.926549,
+          "front_gap": 30.784909,
+          "front_speed": 18.042045,
+          "ramp_speed": 28.022552,
+          "ramp_target_speed": 21.756147,
+          "ramp_x": 97.663961
+        },
+        "delta_both": 0.282507640889359,
+        "delta_gap": 0.214964196435659,
+        "delta_speed": 0.06657843979813483,
+        "i_lin": 0.0009650046555651492,
+        "pair_status": "OK",
+        "perturbation": {
+          "ego_speed": 0.253797,
+          "front_gap": -0.145304,
+          "front_speed": -1.116153
+        },
+        "repetition": 0,
+        "sim_seed": 2954206337,
+        "stream": "audit",
+        "usable": true
+      },
+      {
+        "00": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 26.685392,
+            "front_gap": 23.646453,
+            "front_speed": 18.297247,
+            "ramp_speed": 20.354543,
+            "ramp_target_speed": 27.973475,
+            "ramp_x": 114.206719
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 48,
+          "n_normal": 44,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092152533+0000_4881f03b\\v02-anchor-0003_rep0_00.json",
+          "termination": "goal",
+          "value": 1.224827114679092
+        },
+        "01": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 25.685392,
+            "front_gap": 23.646453,
+            "front_speed": 18.297247,
+            "ramp_speed": 20.354543,
+            "ramp_target_speed": 27.973475,
+            "ramp_x": 114.206719
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 45,
+          "n_normal": 47,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092152533+0000_4881f03b\\v02-anchor-0003_rep0_01.json",
+          "termination": "goal",
+          "value": 1.0279480915526942
+        },
+        "10": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 26.685392,
+            "front_gap": 25.646453,
+            "front_speed": 18.297247,
+            "ramp_speed": 20.354543,
+            "ramp_target_speed": 27.973475,
+            "ramp_x": 114.206719
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 44,
+          "n_normal": 48,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092152533+0000_4881f03b\\v02-anchor-0003_rep0_10.json",
+          "termination": "goal",
+          "value": 0.7298659665625845
+        },
+        "11": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 25.685392,
+            "front_gap": 25.646453,
+            "front_speed": 18.297247,
+            "ramp_speed": 20.354543,
+            "ramp_target_speed": 27.973475,
+            "ramp_x": 114.206719
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 46,
+          "n_normal": 46,
+          "n_steps": 92,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092152533+0000_4881f03b\\v02-anchor-0003_rep0_11.json",
+          "termination": "goal",
+          "value": 1.2514364968957246
+        },
+        "anchor_id": "v02-anchor-0003",
+        "anchor_index": 3,
+        "base_scenario": {
+          "ego_speed": 26.685392,
+          "front_gap": 23.646453,
+          "front_speed": 18.297247,
+          "ramp_speed": 20.354543,
+          "ramp_target_speed": 27.973475,
+          "ramp_x": 114.206719
+        },
+        "delta_both": 0.02660938221663245,
+        "delta_gap": -0.4949611481165076,
+        "delta_speed": -0.19687902312639793,
+        "i_lin": 0.718449553459538,
+        "pair_status": "OK",
+        "perturbation": {
+          "ego_speed": 0.498981,
+          "front_gap": -0.897999,
+          "front_speed": -0.909976
+        },
+        "repetition": 0,
+        "sim_seed": 815357684,
+        "stream": "audit",
+        "usable": true
+      },
+      {
+        "00": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.140885,
+            "front_gap": 37.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 40,
+          "n_normal": 50,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092157012+0000_80741643\\v02-anchor-0012_rep0_00.json",
+          "termination": "goal",
+          "value": 1.1519338620221526
+        },
+        "01": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 23.140885,
+            "front_gap": 37.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 41,
+          "n_normal": 49,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092157012+0000_80741643\\v02-anchor-0012_rep0_01.json",
+          "termination": "goal",
+          "value": 1.2163878923540379
+        },
+        "10": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 24.140885,
+            "front_gap": 39.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 41,
+          "n_normal": 49,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092157012+0000_80741643\\v02-anchor-0012_rep0_10.json",
+          "termination": "goal",
+          "value": 0.5212940386466944
+        },
+        "11": {
+          "category": "FINITE",
+          "censored": true,
+          "conditioned_scenario": {
+            "ego_speed": 23.140885,
+            "front_gap": 39.120183,
+            "front_speed": 17.859437,
+            "ramp_speed": 27.911755,
+            "ramp_target_speed": 24.470266,
+            "ramp_x": 122.993428
+          },
+          "ego_collision": 0,
+          "exit_status": "completed",
+          "n_no_candidate": 0,
+          "n_no_closing": 39,
+          "n_normal": 51,
+          "n_steps": 90,
+          "raw_path": "D:\\SafeFlipLab\\v02\\runs\\pilot\\v02_pilot_WideExplore_2279189195_20261015T092157012+0000_80741643\\v02-anchor-0012_rep0_11.json",
+          "termination": "goal",
+          "value": 0.6544468660323418
+        },
+        "anchor_id": "v02-anchor-0012",
+        "anchor_index": 12,
+        "base_scenario": {
+          "ego_speed": 24.140885,
+          "front_gap": 37.120183,
+          "front_speed": 17.859437,
+          "ramp_speed": 27.911755,
+          "ramp_target_speed": 24.470266,
+          "ramp_x": 122.993428
+        },
+        "delta_both": -0.49748699598981083,
+        "delta_gap": -0.6306398233754582,
+        "delta_speed": 0.06445403033188524,
+        "i_lin": 0.06869879705376225,
+        "pair_status": "OK",
+        "perturbation": {
+          "ego_speed": -0.138341,
+          "front_gap": 2.707841,
+          "front_speed": -1.056684
+        },
+        "repetition": 0,
+        "sim_seed": 484391145,
+        "stream": "audit",
+        "usable": true
+      }
+    ]
+  },
+  "auxiliary_method_comparison": [
+    {
+      "delta_eq_s": 0.05,
+      "k_usable_audit": 3,
+      "method": "WideExplore",
+      "n_nominees": 3,
+      "n_reversal": 1,
+      "n_unusable_audit": 0,
+      "nominees": "v02-anchor-0008;v02-anchor-0003;v02-anchor-0012",
+      "precision_at_k": 0.3333333333333333,
+      "role": "AUXILIARY_EXPLORATORY"
+    },
+    {
+      "delta_eq_s": 0.05,
+      "k_usable_audit": 3,
+      "method": "VerifyFirst",
+      "n_nominees": 3,
+      "n_reversal": 3,
+      "n_unusable_audit": 0,
+      "nominees": "v02-anchor-0014;v02-anchor-0012;v02-anchor-0009",
+      "precision_at_k": 1.0,
+      "role": "AUXILIARY_EXPLORATORY"
+    }
+  ],
+  "binary_counts": {
+    "n_quartets": 54,
+    "note": "descriptive only; 0 events means no rate claim is made",
+    "per_condition_events": {
+      "00": 1,
+      "01": 0,
+      "10": 1,
+      "11": 0
+    },
+    "rescue_pairs": 1,
+    "reverse_pairs": 0
+  },
+  "budget_scope": "v02-pilot",
+  "cap": 240,
+  "completed": 240,
+  "confirmatory_status": "PENDING",
+  "errored": 0,
+  "estimates": {
+    "delta_both": {
+      "ci_high": 0.052564549789873474,
+      "ci_low": -0.04362666708443795,
+      "label": "11-00 (both)",
+      "n_anchors": 18,
+      "note": "anchor-level cluster bootstrap; sampling basis=UNPROVEN",
+      "point": 0.0030047481402012324
+    },
+    "delta_gap": {
+      "ci_high": 0.07688666198352923,
+      "ci_low": -0.05249576847714259,
+      "label": "10-00 (gap)",
+      "n_anchors": 18,
+      "note": "anchor-level cluster bootstrap; sampling basis=UNPROVEN",
+      "point": 0.012678357426054089
+    },
+    "delta_speed": {
+      "ci_high": 0.12426681148660434,
+      "ci_low": -0.05893149631913162,
+      "label": "01-00 (speed)",
+      "n_anchors": 18,
+      "note": "anchor-level cluster bootstrap; sampling basis=UNPROVEN",
+      "point": 0.032696413337710103
+    },
+    "i_lin": {
+      "ci_high": 0.06130465043020797,
+      "ci_low": -0.14653447436417738,
+      "label": "interaction",
+      "n_anchors": 18,
+      "note": "anchor-level cluster bootstrap; sampling basis=UNPROVEN",
+      "point": -0.042370022623562965
+    }
+  },
+  "figures": {
+    "figure_1_condition_ttc": "D:\\SafeFlipLab\\v02\\reports\\pilot\\figure_1_condition_ttc.png",
+    "figure_2_anchor_contrast_forest": "D:\\SafeFlipLab\\v02\\reports\\pilot\\figure_2_anchor_contrast_forest.png",
+    "figure_3_within_anchor_variation": "D:\\SafeFlipLab\\v02\\reports\\pilot\\figure_3_within_anchor_variation.png",
+    "figure_4_per_anchor_delta_both": "D:\\SafeFlipLab\\v02\\reports\\pilot\\figure_4_per_anchor_delta_both.png"
+  },
+  "gates": {
+    "G10_missingness": {
+      "n_quartets": 54,
+      "n_unusable": 0,
+      "status": "PASS",
+      "unusable_share": 0.0
+    },
+    "G1_determinism": {
+      "evidence": "V01 real same-seed replay matched bitwise; V02 scenarios and seeds are SHA-256 derived (unit-tested). No extra episodes spent on a replay.",
+      "status": "PASS_BY_COMPOSITION"
+    },
+    "G2_intervention": {
+      "bounds_violations": [],
+      "intervention_mismatches": [],
+      "n_bounds_violations": 0,
+      "n_intervention_mismatches": 0,
+      "note": "declared dimensions changed exactly as specified; no clipping anywhere",
+      "status": "PASS"
+    },
+    "G3a_within_anchor_variance": {
+      "mean_within_anchor_variance_s2": 0.09166663250698943,
+      "n_anchors_with_reps": 18,
+      "status": "PASS"
+    },
+    "G3b_binary_events": {
+      "events": {
+        "00": 1,
+        "01": 0,
+        "10": 1,
+        "11": 0
+      },
+      "note": "0 events => the binary endpoint supports no rate claim (rule of three not applied: its iid assumption does not hold here)",
+      "status": "PASS"
+    },
+    "G4_perturbation_effective": {
+      "bitwise_identical_groups": 0,
+      "status": "PASS",
+      "varying_groups": 18
+    },
+    "G6_simulator_stability": {
+      "errored": 0,
+      "errors_by_type": {},
+      "interrupted": 0,
+      "n_unexplained": 0,
+      "note": "the only error was the D37 archive-serialisation defect in the newly written V02 runner, which was fixed and regression-tested before the pilot; it is not simulator instability and no episode was re-run",
+      "status": "PASS"
+    },
+    "metric_equivalence": {
+      "max_abs_delta_s": 8.290877133346323e-06,
+      "n_episodes_checked": 240,
+      "n_over_tolerance": 0,
+      "note": "derived per-step minimum reproduces the simulator's own min_forward_ttc_sampled_s; residual is 9-dp trajectory rounding + vx=speed*cos(heading) reconstruction, far below the 0.05 s effect scale",
+      "status": "PASS",
+      "tolerance_s": 0.0001,
+      "worst_case": {
+        "abs_delta_s": 8.290877133346323e-06,
+        "derived": 0.0,
+        "file": "v02-anchor-0012_rep0_10.json",
+        "upstream": 8.290877133346323e-06
+      }
+    },
+    "ttc_layer_composition": {
+      "FINITE": 216
+    }
+  },
+  "heterogeneity": {
+    "delta_both": {
+      "max": 0.21539208144221997,
+      "mean": 0.0030047481402012324,
+      "mean_dropping_top_positive": -0.03272610312783929,
+      "min": -0.1979835206410229,
+      "n_anchors": 18,
+      "n_dropped": 3,
+      "n_negative": 10,
+      "n_positive": 8,
+      "n_zero": 0
+    },
+    "delta_gap": {
+      "max": 0.2928762597481637,
+      "mean": 0.012678357426054089,
+      "mean_dropping_top_positive": -0.030668242815907753,
+      "min": -0.2967660691534975,
+      "n_anchors": 18,
+      "n_dropped": 3,
+      "n_negative": 8,
+      "n_positive": 10,
+      "n_zero": 0
+    },
+    "delta_speed": {
+      "max": 0.3944858049131117,
+      "mean": 0.032696413337710103,
+      "mean_dropping_top_positive": -0.03133418033302686,
+      "min": -0.43522205276585163,
+      "n_anchors": 18,
+      "n_dropped": 3,
+      "n_negative": 10,
+      "n_positive": 8,
+      "n_zero": 0
+    },
+    "i_lin": {
+      "max": 0.5228070368623896,
+      "mean": -0.042370022623562965,
+      "mean_dropping_top_positive": -0.10881651627384287,
+      "min": -0.5630862635252186,
+      "n_anchors": 18,
+      "n_dropped": 3,
+      "n_negative": 10,
+      "n_positive": 8,
+      "n_zero": 0
+    }
+  },
+  "i_log": {
+    "mean_i_log": -0.0812763529869033,
+    "n_defined": 53,
+    "n_usable_quartets": 54,
+    "note": "pure I_log; undefined on TTC=0 / censored(+inf) / missing; no floor applied",
+    "reason_codes": {
+      "DEFINED": 53,
+      "ZERO_TTC": 1
+    },
+    "share_defined": 0.9814814814814815
+  },
+  "interrupted": 0,
+  "launched": 240,
+  "m2_secondary": {
+    "anchor_level_contrasts": {
+      "delta_both": {
+        "ci_high": 0.006386273853981293,
+        "ci_low": -0.024529336376605003,
+        "n_anchors": 18,
+        "point": -0.006227731136930859
+      },
+      "delta_gap": {
+        "ci_high": 0.026177894642490648,
+        "ci_low": -0.022456163685654004,
+        "n_anchors": 18,
+        "point": 0.0018557616683637932
+      },
+      "delta_speed": {
+        "ci_high": 0.005057719381682411,
+        "ci_low": -0.03283089783429391,
+        "n_anchors": 18,
+        "point": -0.010693454331529711
+      },
+      "i_lin": {
+        "ci_high": 0.03034585588192392,
+        "ci_low": -0.023502501410383847,
+        "n_anchors": 18,
+        "point": 0.0026099615262350586
+      }
+    },
+    "n_complete_quartets": 54,
+    "n_episodes_parsed": 216,
+    "note": "M2 (registered secondary): share of policy steps with forward TTC below tau_low; descriptive, same anchor clustering as M1",
+    "per_condition_mean_share": {
+      "00": 0.023392757233568533,
+      "01": 0.012699302902038823,
+      "10": 0.02524851890193233,
+      "11": 0.017165026096637673
+    },
+    "tau_low_s": 1.0
+  },
+  "n_anchors": 18,
+  "n_primary_quartets": 54,
+  "n_usable_quartets": 54,
+  "phase": "pilot",
+  "protocol": "SafeFlipLab-v02",
+  "protocol_hash": "d175ec90eecf4e8080d33cc43aab1e2f1c469b73588c6a682bfdfd30c8dd9925",
+  "status": "OK",
+  "upstream_ttc_mismatches": 0,
+  "upstream_ttc_mismatches_note": "legacy run-time counter under the old 1e-6 s tolerance; see gates.metric_equivalence for the frozen 1e-4 s criterion",
+  "wall_time_s": 262.48
+}

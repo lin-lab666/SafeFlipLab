@@ -1,0 +1,41 @@
+=== V01 doctor (closure) 2026-10-15T12:14:23Z ===
+SafeFlipLab doctor
+==================
+[PASS] python 3.13
+[PASS] platform windows
+[PASS] cornercaselab==0.3.0
+[PASS] highway-env==1.10.2
+[PASS] gymnasium==1.2.2
+[PASS] dir safefliplab/
+[PASS] dir configs/
+[PASS] dir tests/
+[PASS] dir docs/
+[PASS] dir reports/
+[PASS] adapter interface verification
+[PASS] highway-env env construction (no reset)
+[PASS] anchor legality domain
+[PASS] quartet construction (no clipping)
+[PASS] budget smoke
+[PASS] budget pilot
+[PASS] budget formal
+------------------
+17/17 checks passed
+VERDICT: GO (interface verified; no episodes launched by doctor)
+V01_DOCTOR_EXIT=0
+
+=== V01 unit tests ===
+=== V02 doctor (closure) 2026-10-15T12:14:30Z ===
+SafeFlipLab V02 doctor
+======================
+[PASS] frozen protocol config: hash=d175ec90eecf4e80...
+[PASS] adapter interface: cornercaselab 0.3.0 / boundary
+[PASS] anchor domain stays inside upstream BOUNDS: all dimensions legal under extremes
+[PASS] anchor stream reproducibility (18 anchors): first={'ego_speed': 28.357476, 'front_gap': 26.670271, 'front_speed': 19.432247, 'ramp_x': 111.269905, 'ramp_speed': 22.478692, 'ramp_target_speed': 29.562324}
+[PASS] budget caps: smoke=24, pilot=240
+[PASS] 21-column canonical ledger schema: 21 columns
+[PASS] no UNSET research parameter: []
+------------------
+7/7 checks passed
+VERDICT: GO (interface verified; no episodes launched by doctor)
+simulator settings: horizon=25.0s sim=15Hz policy=5Hz
+V02_DOCTOR_EXIT=0

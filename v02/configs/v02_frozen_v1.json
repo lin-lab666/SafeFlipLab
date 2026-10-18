@@ -1,0 +1,53 @@
+{
+  "protocol": "SafeFlipLab-v02",
+  "schema_id": "sfl-v02-param-schema-v1",
+  "status": "FROZEN",
+  "frozen_utc": "2026-10-15",
+  "frozen_by": "WorkBuddy autonomous project lead (authorised by the 2026-10-15 owner mandate)",
+  "note": "V02 protocol, FROZEN before any V02 real episode. This freeze is an autonomous engineering/scientific decision by the project lead with reasons in docs/AUTONOMOUS_DECISIONS.md (D28-D36); it is NOT external peer review and must not be described as such. V01's unapproved D4/D5/D6 are NOT thereby approved. No arbitrary default is ever used: an UNSET parameter raises rather than defaulting.",
+  "parameters": {
+    "gap_intervention_m": {"status": "FROZEN", "value": 2.0, "note": "condition 10/11 adds +2.0 m to front_gap; carried over from V01 for continuity"},
+    "speed_intervention_mps": {"status": "FROZEN", "value": 1.0, "note": "condition 01/11 subtracts 1.0 m/s from ego_speed; carried over from V01 for continuity"},
+    "tau_cap_s": {"status": "FROZEN", "value": 10.0, "note": "right-censoring ceiling for Layer-2 CENSORED / NO_CANDIDATE; far above every observed finite min-TTC (~0.9-1.5 s) so it never truncates a real finite value"},
+    "tau_low_threshold_s": {"status": "FROZEN", "value": 1.0, "note": "M2 = fraction of policy steps with forward TTC < 1.0 s"},
+    "delta_eq_s": {"status": "FROZEN", "value": 0.05, "note": "reversal margin for the auxiliary nomination-quality indicator R_a; fixed from mechanism scale (typical |Delta| is 0.02-0.35 s) and NOT tuned to any method"},
+    "bootstrap_resamples": {"status": "FROZEN", "value": 10000, "note": "anchor-level cluster bootstrap resamples"},
+    "alpha": {"status": "FROZEN", "value": 0.05, "note": "two-sided alpha for descriptive interval reporting only"},
+    "analysis_seed": {"status": "FROZEN", "value": 20261015, "note": "fixed analysis RNG seed for every bootstrap; never result-picked"},
+    "no_candidate_policy": {"status": "FROZEN", "value": "assign_cap", "note": "primary (b): a NO_CANDIDATE episode is assigned tau_cap and flagged; sensitivity (a) exclude is reported alongside"},
+    "i_log_floor_phi_s": {"status": "FROZEN", "value": null, "note": "no floor approved: pure I_log stays UNDEFINED on 0/inf/missing, reported by reason code"},
+    "sampling_assumption_basis": {"status": "FROZEN", "value": "UNPROVEN", "note": "sign-flip/max-T validity conditions A/B/C are not established, so confirmatory tests stay PENDING and no p-value is produced. NOT self-approved."},
+    "perturbation_front_gap_halfwidth_m": {"status": "FROZEN", "value": 3.0, "note": "P2: shared within-anchor jitter of the initial front gap"},
+    "perturbation_front_speed_halfwidth_mps": {"status": "FROZEN", "value": 1.5, "note": "P1: shared within-anchor jitter of the lead initial speed (upstream ties lead speed to its target speed)"},
+    "perturbation_ego_speed_halfwidth_mps": {"status": "FROZEN", "value": 0.5, "note": "P4: shared within-anchor jitter of the ego initial speed (intervention is applied on top)"},
+    "anchor_domain": {
+      "status": "FROZEN",
+      "value": {
+        "ego_speed": [23.0, 30.0],
+        "front_gap": [21.0, 40.0],
+        "front_speed": [17.0, 21.0],
+        "ramp_x": [80.0, 140.0],
+        "ramp_speed": [12.0, 30.0],
+        "ramp_target_speed": [20.0, 34.0]
+      },
+      "note": "V02 anchor domain: narrowed to the closing/interaction regime, with perturbation+intervention margins so all four conditions stay inside the upstream BOUNDS (rejection sampling, never clipping)"
+    },
+    "upstream_bounds": {
+      "status": "FROZEN",
+      "value": {
+        "ego_speed": [20.0, 32.0],
+        "front_gap": [18.0, 80.0],
+        "front_speed": [15.0, 32.0],
+        "ramp_x": [80.0, 140.0],
+        "ramp_speed": [12.0, 30.0],
+        "ramp_target_speed": [20.0, 34.0]
+      },
+      "note": "cornercaselab 0.3.0 domain.BOUNDS, frozen upstream contract"
+    },
+    "v02_master_seed": {"status": "FROZEN", "value": 2279189195, "note": "SHA256(canonical_json(['SafeFlipLab-v02','dev-master',0])) truncated to 32 bits; deterministic, never result-picked; V02 dev phase only"},
+    "smoke_plan": {"status": "FROZEN", "value": {"anchors": 3, "repetitions": 2, "conditions": 4, "episodes": 24}, "note": "3x2x4 = 24 (cap 24)"},
+    "pilot_plan": {"status": "FROZEN", "value": {"anchors": 18, "repetitions": 3, "conditions": 4, "primary_episodes": 216, "methods": ["WideExplore", "VerifyFirst"], "nominees_per_method": 3, "audit_quartets_per_nominee": 1, "aux_episodes": 24, "episodes": 240}, "note": "216 primary (reversal/interaction) + 24 auxiliary independent-audit method comparison = 240 (cap 240)"},
+    "s2_min_s2": {"status": "FROZEN", "value": 0.0, "note": "G3a gate: within-anchor variance of min-TTC must be strictly greater than 0 (exclusive) for the perturbation to be valid; the stronger s2_min refinement is deferred to the formal design step"},
+    "n_events_min": {"status": "FROZEN", "value": 1, "note": "G3b: fewer than 1 observed collision event in the pilot means the binary endpoint is reported descriptively only"}
+  }
+}

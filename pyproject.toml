@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "safefliplab"
+version = "0.1.0"
+description = "Budgeted counterfactual safety-reversal testing for simplified autonomous-driving simulations"
+readme = "README.md"
+requires-python = ">=3.11,<3.14"
+license = "Apache-2.0"
+authors = [{ name = "吴昊霖" }]
+dependencies = []
+
+[project.optional-dependencies]
+sim = [
+  "cornercaselab @ git+https://github.com/lin-lab666/CornerCaseLab@v0.3.0",
+  "highway-env==1.10.2",
+  "gymnasium==1.2.2",
+  "numpy>=1.24,<3",
+  "Pillow>=10,<13",
+  "matplotlib>=3.8,<4",
+]
+
+[project.scripts]
+safefliplab = "safefliplab.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["safefliplab*"]

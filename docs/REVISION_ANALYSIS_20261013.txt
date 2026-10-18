@@ -1,0 +1,76 @@
+SafeFlipLab — 第二轮复审统计解释修订证据（2026-10-13，零新 episode）
+命令：.venv/Scripts/python.exe .workbuddy/tmp_audit/rev_data.py（只读 runs/episode_ledger.csv）
+================================================================================
+pilot completed episodes: 240
+
+=== distinct anchors per (method, stream) ===
+   ('VerifyFirst', 'audit') distinct anchors = 3 ['anchor-0000', 'anchor-0001', 'anchor-0002']
+   ('VerifyFirst', 'discovery') distinct anchors = 6 ['anchor-0000', 'anchor-0001', 'anchor-0002', 'anchor-0003', 'anchor-0004', 'anchor-0005']
+   ('WideExplore', 'audit') distinct anchors = 3 ['anchor-0000', 'anchor-0001', 'anchor-0002']
+   ('WideExplore', 'discovery') distinct anchors = 15 ['anchor-0000', 'anchor-0001', 'anchor-0002', 'anchor-0003', 'anchor-0004', 'anchor-0005', 'anchor-0006', 'anchor-0007', 'anchor-0008', 'anchor-0009', 'anchor-0010', 'anchor-0011', 'anchor-0012', 'anchor-0013', 'anchor-0014']
+
+=== distinct anchors per (method, stream, condition) ===
+   ('VerifyFirst', 'audit', '00') -> 3
+   ('VerifyFirst', 'audit', '01') -> 3
+   ('VerifyFirst', 'audit', '10') -> 3
+   ('VerifyFirst', 'audit', '11') -> 3
+   ('VerifyFirst', 'discovery', '00') -> 6
+   ('VerifyFirst', 'discovery', '01') -> 6
+   ('VerifyFirst', 'discovery', '10') -> 6
+   ('VerifyFirst', 'discovery', '11') -> 6
+   ('WideExplore', 'audit', '00') -> 3
+   ('WideExplore', 'audit', '01') -> 3
+   ('WideExplore', 'audit', '10') -> 3
+   ('WideExplore', 'audit', '11') -> 3
+   ('WideExplore', 'discovery', '00') -> 15
+   ('WideExplore', 'discovery', '01') -> 15
+   ('WideExplore', 'discovery', '10') -> 15
+   ('WideExplore', 'discovery', '11') -> 15
+
+=== episodes per (method, stream, condition) ===
+   ('VerifyFirst', 'audit', '00') -> 15
+   ('VerifyFirst', 'audit', '01') -> 15
+   ('VerifyFirst', 'audit', '10') -> 15
+   ('VerifyFirst', 'audit', '11') -> 15
+   ('VerifyFirst', 'discovery', '00') -> 15
+   ('VerifyFirst', 'discovery', '01') -> 15
+   ('VerifyFirst', 'discovery', '10') -> 15
+   ('VerifyFirst', 'discovery', '11') -> 15
+   ('WideExplore', 'audit', '00') -> 15
+   ('WideExplore', 'audit', '01') -> 15
+   ('WideExplore', 'audit', '10') -> 15
+   ('WideExplore', 'audit', '11') -> 15
+   ('WideExplore', 'discovery', '00') -> 15
+   ('WideExplore', 'discovery', '01') -> 15
+   ('WideExplore', 'discovery', '10') -> 15
+   ('WideExplore', 'discovery', '11') -> 15
+
+=== VerifyFirst discovery: quartets per anchor (valid_n) ===
+   anchor-0000 quartets = 4 reps = ['0', '1', '2', '3']
+   anchor-0001 quartets = 4 reps = ['0', '1', '2', '3']
+   anchor-0002 quartets = 4 reps = ['0', '1', '2', '3']
+   anchor-0003 quartets = 1 reps = ['0']
+   anchor-0004 quartets = 1 reps = ['0']
+   anchor-0005 quartets = 1 reps = ['0']
+
+=== WideExplore discovery: quartets per anchor ===
+   anchor-0000 episodes = 4 quartets = 1
+   anchor-0001 episodes = 4 quartets = 1
+   anchor-0002 episodes = 4 quartets = 1
+   anchor-0003 episodes = 4 quartets = 1
+   anchor-0004 episodes = 4 quartets = 1
+   anchor-0005 episodes = 4 quartets = 1
+   anchor-0006 episodes = 4 quartets = 1
+   anchor-0007 episodes = 4 quartets = 1
+   anchor-0008 episodes = 4 quartets = 1
+   anchor-0009 episodes = 4 quartets = 1
+   anchor-0010 episodes = 4 quartets = 1
+   anchor-0011 episodes = 4 quartets = 1
+   anchor-0012 episodes = 4 quartets = 1
+   anchor-0013 episodes = 4 quartets = 1
+   anchor-0014 episodes = 4 quartets = 1
+
+=== audit anchors per method ===
+   WideExplore audit anchors = ['anchor-0000', 'anchor-0001', 'anchor-0002']
+   VerifyFirst audit anchors = ['anchor-0000', 'anchor-0001', 'anchor-0002']
+EXIT_CODE=0

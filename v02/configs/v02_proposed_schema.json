@@ -1,0 +1,26 @@
+{
+  "schema_id": "sfl-v02-param-schema-v1",
+  "protocol": "SafeFlipLab-v02",
+  "note": "Research-parameter schema. Every entry MUST carry an explicit status (PROPOSED|FROZEN|UNSET) in the config; UNSET requires value=null. This file defines structure/types only - it carries NO research value.",
+  "parameters": {
+    "gap_intervention_m": {"type": "number", "unit": "m", "note": "Delta g (front_gap increase)"},
+    "speed_intervention_mps": {"type": "number", "unit": "m/s", "note": "Delta v (ego_speed decrease magnitude)"},
+    "tau_cap_s": {"type": "number", "unit": "s", "note": "right-censoring ceiling for TTC (Layer 2 CENSORED/NO_CANDIDATE)"},
+    "tau_low_threshold_s": {"type": "number", "unit": "s", "note": "M2 threshold tau (TTC below which steps are counted)"},
+    "delta_eq_s": {"type": "number", "unit": "s", "note": "reversal equivalence/non-inferiority margin (Q1 R_a)"},
+    "s2_min_s2": {"type": "number", "unit": "s^2", "note": "G3a minimum within-anchor variance of M1"},
+    "n_events_min": {"type": "int", "unit": "events", "note": "G3b minimum collision events to allow B1 rate inference"},
+    "bootstrap_resamples": {"type": "int", "unit": "resamples", "note": "cluster bootstrap B"},
+    "alpha": {"type": "number", "unit": "probability", "note": "pre-registered alpha"},
+    "dev_seeds": {"type": "list", "unit": "seeds", "note": "development seed set (TP); never formal"},
+    "no_candidate_policy": {"type": "string", "allowed": ["assign_cap", "exclude"], "note": "Layer 2 NO_CANDIDATE primary policy (a)/(b)"},
+    "i_log_floor_phi_s": {"type": "number", "unit": "s", "note": "optional floored-log floor; UNSET unless explicitly approved"},
+    "sampling_assumption_basis": {"type": "string", "allowed": ["UNPROVEN", "A", "B", "C"], "note": "sign-flip/max-T validity basis; UNPROVEN => confirmatory tests PENDING"},
+    "perturbation_lead_speed_delta": {"type": "number", "unit": "m/s", "note": "P1 half-width"},
+    "perturbation_front_gap_delta": {"type": "number", "unit": "m", "note": "P2 half-width"},
+    "perturbation_lead_decel_prob": {"type": "number", "unit": "probability", "note": "P3 trigger probability"},
+    "perturbation_lead_decel_mag": {"type": "number", "unit": "m/s^2", "note": "P3 deceleration magnitude (<= IDM comfort)"},
+    "perturbation_lead_decel_time_s": {"type": "number", "unit": "s", "note": "P3 deceleration start time"},
+    "perturbation_ego_speed_delta": {"type": "number", "unit": "m/s", "note": "P4 half-width"}
+  }
+}

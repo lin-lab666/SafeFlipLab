@@ -1,0 +1,2 @@
+phase,budget_scope,cap,launched,completed,error,interrupted,pending_or_unknown,unused_slots,billing_note
+smoke,smoke,24,24,24,0,0,0,0,failed / interrupted / unknown attempts are billed; no free retry

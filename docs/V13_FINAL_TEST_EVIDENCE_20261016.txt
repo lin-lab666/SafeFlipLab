@@ -1,0 +1,165 @@
+=== V01 doctor 2026-10-16T11:32:53Z ===
+------------------
+17/17 checks passed
+VERDICT: GO (interface verified; no episodes launched by doctor)
+V01_DOCTOR_EXIT=0
+
+=== V02 doctor 2026-10-16T11:32:58Z ===
+7/7 checks passed
+VERDICT: GO (interface verified; no episodes launched by doctor)
+simulator settings: horizon=25.0s sim=15Hz policy=5Hz
+V02_DOCTOR_EXIT=0
+
+=== V02 tests ===
+test_apply_does_not_mutate (test_conditions.TestConditions.test_apply_does_not_mutate) ... ok
+test_bad_condition (test_conditions.TestConditions.test_bad_condition) ... ok
+test_legality_reports_missing (test_conditions.TestConditions.test_legality_reports_missing) ... ok
+test_offsets (test_conditions.TestConditions.test_offsets) ... ok
+test_quartet_legality_detects_out_of_bounds (test_conditions.TestConditions.test_quartet_legality_detects_out_of_bounds) ... ok
+test_quartet_legality_ok (test_conditions.TestConditions.test_quartet_legality_ok) ... ok
+test_derive_deterministic (test_conditions.TestDerivation.test_derive_deterministic) ... ok
+test_derive_label_sensitive (test_conditions.TestDerivation.test_derive_label_sensitive) ... ok
+test_derive_seed_range (test_conditions.TestDerivation.test_derive_seed_range) ... ok
+test_sim_seed_ignores_condition_but_tracks_stream (test_conditions.TestDerivation.test_sim_seed_ignores_condition_but_tracks_stream) ... ok
+test_sim_seed_rejects_bad_stream (test_conditions.TestDerivation.test_sim_seed_rejects_bad_stream) ... ok
+test_draws_bounded (test_conditions.TestSharedPerturbation.test_draws_bounded) ... ok
+test_draws_deterministic (test_conditions.TestSharedPerturbation.test_draws_deterministic) ... ok
+test_shared_alias_matches (test_conditions.TestSharedPerturbation.test_shared_alias_matches) ... ok
+test_unset_bound_raises (test_conditions.TestSharedPerturbation.test_unset_bound_raises) ... ok
+test_cap_enforced (test_ledger21.TestBudget.test_cap_enforced) ... ok
+test_duplicate_key_refused (test_ledger21.TestBudget.test_duplicate_key_refused) ... ok
+test_no_free_retry_new_run_id_billed (test_ledger21.TestBudget.test_no_free_retry_new_run_id_billed) ... ok
+test_reserve_and_outcome_roundtrip (test_ledger21.TestBudget.test_reserve_and_outcome_roundtrip) ... ok
+test_scope_state_survives_reopen (test_ledger21.TestBudget.test_scope_state_survives_reopen) ... ok
+test_scopes_independent (test_ledger21.TestBudget.test_scopes_independent) ... ok
+test_eight_processes_cap_three (test_ledger21.TestCrossProcess.test_eight_processes_cap_three) ... ok
+test_bad_header_rejected (test_ledger21.TestSchema.test_bad_header_rejected) ... ok
+test_canonical_header_on_create (test_ledger21.TestSchema.test_canonical_header_on_create) ... ok
+test_columns_count (test_ledger21.TestSchema.test_columns_count) ... ok
+test_fingerprint_detects_tamper (test_ledger21.TestSchema.test_fingerprint_detects_tamper) ... ok
+test_fingerprint_roundtrip (test_ledger21.TestSchema.test_fingerprint_roundtrip) ... ok
+test_row_width_guard (test_ledger21.TestSchema.test_row_width_guard) ... ok
+test_ignores_none_and_needs_two (test_power.TestAnchorSd.test_ignores_none_and_needs_two) ... ok
+test_plan_rejects_bad_scale (test_power.TestAnchorSd.test_plan_rejects_bad_scale) ... ok
+test_plan_reports_required_anchors_and_episodes (test_power.TestAnchorSd.test_plan_reports_required_anchors_and_episodes) ... ok
+test_sample_sd (test_power.TestAnchorSd.test_sample_sd) ... ok
+test_domain (test_power.TestNormalQuantile.test_domain) ... ok
+test_known_values (test_power.TestNormalQuantile.test_known_values) ... ok
+test_alpha_and_power_direction (test_power.TestSizing.test_alpha_and_power_direction) ... ok
+test_mde_at_n_is_inverse_of_sizing (test_power.TestSizing.test_mde_at_n_is_inverse_of_sizing) ... ok
+test_monotone_in_mde_and_sd (test_power.TestSizing.test_monotone_in_mde_and_sd) ... ok
+test_no_defaults_multiplicity (test_power.TestSizing.test_no_defaults_multiplicity) ... ok
+test_rejects_bad_inputs (test_power.TestSizing.test_rejects_bad_inputs) ... ok
+test_ci_with_params (test_reporting_synth.TestBuildReport.test_ci_with_params) ... ok
+test_confirmatory_is_pending (test_reporting_synth.TestBuildReport.test_confirmatory_is_pending) ... ok
+test_no_ci_without_params (test_reporting_synth.TestBuildReport.test_no_ci_without_params) ... ok
+test_summary (test_reporting_synth.TestBuildReport.test_summary) ... ok
+test_collision_possible (test_reporting_synth.TestFakeAdapter.test_collision_possible) ... ok
+test_deterministic (test_reporting_synth.TestFakeAdapter.test_deterministic) ... ok
+test_seed_sensitive (test_reporting_synth.TestFakeAdapter.test_seed_sensitive) ... ok
+test_degenerate_zero (test_reporting_synth.TestFigureAxis.test_degenerate_zero) ... ok
+test_empty (test_reporting_synth.TestFigureAxis.test_empty) ... ok
+test_real_spread (test_reporting_synth.TestFigureAxis.test_real_spread) ... ok
+test_tiny_noise_snaps (test_reporting_synth.TestFigureAxis.test_tiny_noise_snaps) ... ok
+test_censored (test_reporting_synth.TestRecordFromTrace.test_censored) ... ok
+test_finite (test_reporting_synth.TestRecordFromTrace.test_finite) ... ok
+test_no_candidate_assign_cap (test_reporting_synth.TestRecordFromTrace.test_no_candidate_assign_cap) ... ok
+test_technical_failure_is_missing (test_reporting_synth.TestRecordFromTrace.test_technical_failure_is_missing) ... ok
+test_require_frozen_rejects_proposed (test_schema.TestResolve.test_require_frozen_rejects_proposed) ... ok
+test_resolve_proposed_returns_value (test_schema.TestResolve.test_resolve_proposed_returns_value) ... ok
+test_resolve_unset_raises (test_schema.TestResolve.test_resolve_unset_raises) ... ok
+test_status_of (test_schema.TestResolve.test_status_of) ... ok
+test_no_silent_defaults (test_schema.TestShippedConfig.test_no_silent_defaults) ... ok
+test_shipped_config_is_valid (test_schema.TestShippedConfig.test_shipped_config_is_valid) ... ok
+test_unset_has_null_value (test_schema.TestShippedConfig.test_unset_has_null_value) ... ok
+test_allowed_value_enforced (test_schema.TestValidationRules.test_allowed_value_enforced) ... ok
+test_extra_parameter_is_violation (test_schema.TestValidationRules.test_extra_parameter_is_violation) ... ok
+test_missing_status_is_violation (test_schema.TestValidationRules.test_missing_status_is_violation) ... ok
+test_unset_with_value_is_violation (test_schema.TestValidationRules.test_unset_with_value_is_violation) ... ok
+test_wrong_type_is_violation (test_schema.TestValidationRules.test_wrong_type_is_violation) ... ok
+test_all_missing_is_none (test_stats_anchor.TestAnchorContrast.test_all_missing_is_none) ... ok
+test_bad_contrast (test_stats_anchor.TestAnchorContrast.test_bad_contrast) ... ok
+test_delta_both_mean_over_reps (test_stats_anchor.TestAnchorContrast.test_delta_both_mean_over_reps) ... ok
+test_i_lin (test_stats_anchor.TestAnchorContrast.test_i_lin) ... ok
+test_missing_rep_skipped (test_stats_anchor.TestAnchorContrast.test_missing_rep_skipped) ... ok
+test_deterministic_and_ordered (test_stats_anchor.TestBootstrap.test_deterministic_and_ordered) ... ok
+test_estimate_insufficient_note (test_stats_anchor.TestBootstrap.test_estimate_insufficient_note) ... ok
+test_estimate_zero_variance_note (test_stats_anchor.TestBootstrap.test_estimate_zero_variance_note) ... ok
+test_too_few (test_stats_anchor.TestBootstrap.test_too_few) ... ok
+test_confirmatory_status (test_stats_anchor.TestGating.test_confirmatory_status) ... ok
+test_max_t_gated (test_stats_anchor.TestGating.test_max_t_gated) ... ok
+test_sign_flip_default_pending (test_stats_anchor.TestGating.test_sign_flip_default_pending) ... ok
+test_sign_flip_eligible_produces_p (test_stats_anchor.TestGating.test_sign_flip_eligible_produces_p) ... ok
+test_sign_flip_unproven_pending (test_stats_anchor.TestGating.test_sign_flip_unproven_pending) ... ok
+test_bad_policy (test_ttc_state.TestAggregate.test_bad_policy) ... ok
+test_censored (test_ttc_state.TestAggregate.test_censored) ... ok
+test_empty_is_missing (test_ttc_state.TestAggregate.test_empty_is_missing) ... ok
+test_finite_min (test_ttc_state.TestAggregate.test_finite_min) ... ok
+test_finite_with_partial_censoring (test_ttc_state.TestAggregate.test_finite_with_partial_censoring) ... ok
+test_no_candidate_assign_cap (test_ttc_state.TestAggregate.test_no_candidate_assign_cap) ... ok
+test_no_candidate_exclude (test_ttc_state.TestAggregate.test_no_candidate_exclude) ... ok
+test_tau_cap_required (test_ttc_state.TestAggregate.test_tau_cap_required) ... ok
+test_technical_failure_is_missing (test_ttc_state.TestAggregate.test_technical_failure_is_missing) ... ok
+test_censored_infinity (test_ttc_state.TestILog.test_censored_infinity) ... ok
+test_defined (test_ttc_state.TestILog.test_defined) ... ok
+test_missing (test_ttc_state.TestILog.test_missing) ... ok
+test_missing_takes_priority (test_ttc_state.TestILog.test_missing_takes_priority) ... ok
+test_zero_ttc_floor_only_when_supplied (test_ttc_state.TestILog.test_zero_ttc_floor_only_when_supplied) ... ok
+test_zero_ttc_undefined_without_floor (test_ttc_state.TestILog.test_zero_ttc_undefined_without_floor) ... ok
+test_censoring_affected (test_ttc_state.TestPairStatus.test_censoring_affected) ... ok
+test_missing_key (test_ttc_state.TestPairStatus.test_missing_key) ... ok
+test_ok (test_ttc_state.TestPairStatus.test_ok) ... ok
+test_pair_missing (test_ttc_state.TestPairStatus.test_pair_missing) ... ok
+test_gap_nonpositive_is_zero_not_inf (test_ttc_state.TestStepState.test_gap_nonpositive_is_zero_not_inf) ... ok
+test_no_candidate (test_ttc_state.TestStepState.test_no_candidate) ... ok
+test_no_closing (test_ttc_state.TestStepState.test_no_closing) ... ok
+test_normal (test_ttc_state.TestStepState.test_normal) ... ok
+test_mapping (test_ttc_state.TestTermination.test_mapping) ... ok
+test_anchor_ids_are_stable (test_v02_pipeline.TestAnchorStream.test_anchor_ids_are_stable) ... ok
+test_every_anchor_is_legal_under_both_perturbation_extremes (test_v02_pipeline.TestAnchorStream.test_every_anchor_is_legal_under_both_perturbation_extremes) ... ok
+test_prefix_stability_smoke_anchor_is_pilot_anchor (test_v02_pipeline.TestAnchorStream.test_prefix_stability_smoke_anchor_is_pilot_anchor) ... ok
+test_stream_is_deterministic (test_v02_pipeline.TestAnchorStream.test_stream_is_deterministic) ... ok
+test_real_config_is_valid (test_v02_pipeline.TestFrozenProtocolGate.test_real_config_is_valid) ... ok
+test_unfrozen_config_is_refused (test_v02_pipeline.TestFrozenProtocolGate.test_unfrozen_config_is_refused) ... ok
+test_unset_parameter_is_refused (test_v02_pipeline.TestFrozenProtocolGate.test_unset_parameter_is_refused) ... ok
+test_cap_is_enforced_and_refuses_extra_episodes (test_v02_pipeline.TestLedgerBilling.test_cap_is_enforced_and_refuses_extra_episodes) ... ok
+test_duplicate_launch_is_refused_before_any_work (test_v02_pipeline.TestLedgerBilling.test_duplicate_launch_is_refused_before_any_work) ... ok
+test_outcome_requires_collision_for_completed (test_v02_pipeline.TestLedgerBilling.test_outcome_requires_collision_for_completed) ... ok
+test_only_primary_episodes_are_parsed (test_v02_pipeline.TestM2DoesNotReadTheAuditStream.test_only_primary_episodes_are_parsed) ... ok
+test_precision_at_k_counts_only_usable (test_v02_pipeline.TestMethods.test_precision_at_k_counts_only_usable) ... ok
+test_precision_at_k_none_when_nothing_usable (test_v02_pipeline.TestMethods.test_precision_at_k_none_when_nothing_usable) ... ok
+test_select_top_prefers_most_negative (test_v02_pipeline.TestMethods.test_select_top_prefers_most_negative) ... ok
+test_unusable_anchor_is_never_nominated (test_v02_pipeline.TestMethods.test_unusable_anchor_is_never_nominated) ... ok
+test_usable_delta_excludes_unusable_anchors (test_v02_pipeline.TestMethods.test_usable_delta_excludes_unusable_anchors) ... ok
+test_verify_key_prefers_more_verified_repetitions_on_ties (test_v02_pipeline.TestMethods.test_verify_key_prefers_more_verified_repetitions_on_ties) ... ok
+test_wide_and_verify_keys_agree_on_one_quartet_pools (test_v02_pipeline.TestMethods.test_wide_and_verify_keys_agree_on_one_quartet_pools)
+WideExplore's pool has exactly one quartet per anchor, where the two ... ok
+test_wide_key_uses_single_quartet (test_v02_pipeline.TestMethods.test_wide_key_uses_single_quartet) ... ok
+test_audit_stream_seed_disjoint_from_discovery (test_v02_pipeline.TestQuartetConstruction.test_audit_stream_seed_disjoint_from_discovery) ... ok
+test_different_repetitions_differ (test_v02_pipeline.TestQuartetConstruction.test_different_repetitions_differ) ... ok
+test_four_conditions_share_one_sim_seed (test_v02_pipeline.TestQuartetConstruction.test_four_conditions_share_one_sim_seed) ... ok
+test_one_shared_perturbation_per_repetition (test_v02_pipeline.TestQuartetConstruction.test_one_shared_perturbation_per_repetition) ... ok
+test_only_the_two_declared_dimensions_change (test_v02_pipeline.TestQuartetConstruction.test_only_the_two_declared_dimensions_change) ... ok
+test_perturbation_is_zero_centred (test_v02_pipeline.TestQuartetConstruction.test_perturbation_is_zero_centred) ... ok
+test_billed_tuple_keys_reads_every_launch (test_v02_pipeline.TestRunnerSafety.test_billed_tuple_keys_reads_every_launch) ... ok
+test_method_label_enters_the_seed (test_v02_pipeline.TestRunnerSafety.test_method_label_enters_the_seed)
+Regression for independent-review finding MAJOR-1: the method label ... ok
+test_method_label_is_required (test_v02_pipeline.TestRunnerSafety.test_method_label_is_required) ... ok
+test_no_orphan_launch_rows_after_failure (test_v02_pipeline.TestRunnerSafety.test_no_orphan_launch_rows_after_failure) ... ok
+test_post_processing_failure_is_never_an_orphan (test_v02_pipeline.TestRunnerSafety.test_post_processing_failure_is_never_an_orphan)
+A non-serialisable payload must still yield a billed, recorded error. ... ok
+test_resume_skips_already_billed_episodes (test_v02_pipeline.TestRunnerSafety.test_resume_skips_already_billed_episodes) ... ok
+test_error_is_billed_and_not_retried (test_v02_pipeline.TestRunnerWithSyntheticAdapter.test_error_is_billed_and_not_retried) ... ok
+test_one_quartet_bills_exactly_four_episodes (test_v02_pipeline.TestRunnerWithSyntheticAdapter.test_one_quartet_bills_exactly_four_episodes) ... ok
+test_gap_and_closing_match_upstream_definition (test_v02_pipeline.TestUpstreamTtcSemantics.test_gap_and_closing_match_upstream_definition) ... ok
+test_lateral_overlap_threshold_is_two_metres (test_v02_pipeline.TestUpstreamTtcSemantics.test_lateral_overlap_threshold_is_two_metres) ... ok
+test_no_vehicle_ahead_is_no_candidate (test_v02_pipeline.TestUpstreamTtcSemantics.test_no_vehicle_ahead_is_no_candidate) ... ok
+test_non_closing_candidate_is_not_reported_as_finite (test_v02_pipeline.TestUpstreamTtcSemantics.test_non_closing_candidate_is_not_reported_as_finite) ... ok
+test_tightest_candidate_wins (test_v02_pipeline.TestUpstreamTtcSemantics.test_tightest_candidate_wins) ... ok
+test_trajectory_helper_shape (test_v02_pipeline.TestUpstreamTtcSemantics.test_trajectory_helper_shape) ... ok
+
+----------------------------------------------------------------------
+Ran 143 tests in 8.745s
+
+OK
+V02_EXIT=0

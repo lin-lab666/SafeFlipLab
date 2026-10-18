@@ -1,0 +1,5 @@
+contrast,label,point_s,ci_low_s,ci_high_s,n_anchors,ci_basis,note
+delta_gap,10-00 (gap),0.012678357426054089,-0.05249576847714259,0.07688666198352923,18,anchor-level cluster bootstrap,anchor-level cluster bootstrap; sampling basis=UNPROVEN
+delta_speed,01-00 (speed),0.032696413337710103,-0.05893149631913162,0.12426681148660434,18,anchor-level cluster bootstrap,anchor-level cluster bootstrap; sampling basis=UNPROVEN
+delta_both,11-00 (both),0.0030047481402012324,-0.04362666708443795,0.052564549789873474,18,anchor-level cluster bootstrap,anchor-level cluster bootstrap; sampling basis=UNPROVEN
+i_lin,interaction,-0.042370022623562965,-0.14653447436417738,0.06130465043020797,18,anchor-level cluster bootstrap,anchor-level cluster bootstrap; sampling basis=UNPROVEN

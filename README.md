@@ -2,6 +2,12 @@
 
 **Budgeted Counterfactual Safety-Reversal Testing for Simplified Autonomous Driving Simulations.**
 
+SafeFlipLab is a **budgeted counterfactual safety-evaluation toolkit** (a
+research instrument for intervention/reversal questions under a fixed episode
+budget) **and** a **reproducible research-engineering artifact** (ledger-first
+billing, byte-level publication manifest, zero-episode test suites). It is not
+a safety-certification tool.
+
 SafeFlipLab asks two questions inside one simplified highway-merge simulation
 (HighwayEnv merge scenario, driven through the public `cornercaselab==0.3.0`
 interface, Apache-2.0):
@@ -18,21 +24,46 @@ interface, Apache-2.0):
 All results are properties of a simplified simulator and one frozen
 observation-only controller. **Nothing here is a real-road safety claim.**
 
-## Closeout status (2026-10-17)
+## What you can do with it
 
-- **Engineering closeout: PASS.** Independent recomputation of 141 assertions,
-  manifest gate PASS, doctor V01 17/17 + V02 7/7 GO, tests V01 **227** +
-  V02 **143** all OK, 58/58 report artefacts byte-idempotent, full ledger
-  reconciliation.
-- **Scientific claim: INCONCLUSIVE** (a legitimate closeout outcome). V02
-  closed as an exploratory/descriptive study; the two endpoints disagree in
+- **Ask a counterfactual reversal question** on a frozen simulator + frozen
+  rule controller, using a four-condition paired design (00 / 10 / 01 / 11)
+  and anchor-level bootstrap intervals.
+- **Account for every episode**: launch-before-run billing, per-scope budget
+  caps, no free retries; failed attempts are still billed and disclosed
+  (D37 is a real example).
+- **Audit nominations independently**: a held-out audit stream with
+  method-dependent seeds. The historical D42/D44 non-independence is disclosed,
+  not hidden.
+- **Reproduce the engineering claims offline**: 234 V01 + 143 V02 unit tests
+  and a byte-level publication-manifest check, with **zero** simulator
+  episodes and **zero** files written to `runs/`.
+- **Read the negative result honestly**: all four primary intervals cross
+  zero, M1/M2 disagree on `Δgap`, and the endpoint resolution is the same
+  order as the observed effect.
+
+## Project status
+
+| Item | Status |
+|---|---|
+| Engineering closeout | **PASS** — independent recomputation of 141 assertions, manifest gate PASS, doctor V01 17/17 + V02 7/7 GO, 58/58 report artefacts byte-idempotent, full ledger reconciliation |
+| Scientific claim | **INCONCLUSIVE** (a legitimate closeout outcome; exploratory/descriptive) |
+| Tests (offline, zero episodes) | **V01 234 OK (skipped=1)** / **V02 143 OK** |
+| V01 formal (12,800 episodes) | **permanent NO-GO** — implemented, never authorised, never run |
+| Repository visibility | as configured in the repository settings |
+
+## Scientific status and limits
+
+- V02 closed as an exploratory/descriptive study; the two endpoints disagree in
   sign (M1 minimal forward TTC and M2 low-TTC step share move in opposite
   directions on Δgap, both in the "safer" direction descriptively); this is
   kept and disclosed, and cross-endpoint sign comparison is forbidden. No
   p-values, no significance claims; MDE=0.10 s is a sample-size planning
   example only.
-- V01 formal (12,800 episodes): **permanent NO-GO** — implemented, never
-  authorised, never run.
+- The V02 binary collision endpoint is nearly information-free in this design:
+  **2 collision events across 54 quartets** (conditions `00` and `10` one each);
+  condition `11` never collided (`reverse=0`, `rescue=1` — a single event).
+  This is why V02 uses a continuous endpoint.
 - Ledger figures (private project data, see below): **528** valid launches
   (V01 264 = smoke 24 + pilot 240; V02 264 = smoke 24 + pilot 240, including
   one V02 smoke error = D37); **748** total historical launches (= 528 valid
@@ -40,9 +71,21 @@ observation-only controller. **Nothing here is a real-road safety claim.**
   not independent (D42/D44): fixed code does not make historical data an
   independent comparison.
 
+## CLI at a glance
+
+| Command | What it does | Side effects |
+|---|---|---|
+| `python -m safefliplab doctor` | read-only environment/interface check (17 checks) | **none** (never creates a ledger) |
+| `python -m safefliplab smoke --max-episodes 24` | at most 24 **real billed** episodes | writes `runs/`; needs owner authorisation |
+| `python -m safefliplab pilot --max-episodes 240` | at most 240 **real billed** episodes | writes `runs/`; needs owner authorisation |
+| `python -m safefliplab report --phase pilot` | rebuild report artefacts from the ledger | writes `reports/` |
+| `python -m safefliplab formal --confirm --max-episodes 12800` | prepared only | **refuses** (EXIT 2) before any file is created |
+| `cd v02 && python -m v02lab doctor` | V02 read-only checks | none |
+| `python scripts/verify_publication.py` | two-scope manifest check | none |
+
 ## Data availability (important)
 
-This repository (PRIVATE snapshot) **includes** all source code, tests,
+This repository snapshot **includes** all source code, tests,
 frozen/dev configs, phase result summaries (`reports/`, `v02/reports/`
 reports/figures/CSV/JSON) and closeout documentation.
 
@@ -150,6 +193,7 @@ RESULTS` and must not be quoted as a result. See `EXAMPLES.md` and
 | `INSTALLATION.md` | extras (`test` / `sim`), platform notes, offline installs |
 | `QUICKSTART.md` | 5-minute offline path |
 | `ARCHITECTURE.md` | module map, ledger/billing gate, adapters, report pipeline, safety gates |
+| `docs/assets/architecture.svg` | text-only pipeline diagram (V01/V02 + gates) |
 | `EXAMPLES.md` | synthetic demo + how to read the frozen results |
 | `TESTING.md` | commands, expected counts (234 / 143), repeat-run policy, CI |
 | `DATA_AVAILABILITY.md` | included/excluded data, 528 vs 748 episodes, request process |

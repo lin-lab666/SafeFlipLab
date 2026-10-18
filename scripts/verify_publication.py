@@ -73,6 +73,8 @@ POST_V1_PATTERNS = [
     "CHANGELOG.md",
     ".github/**",
     "examples/**",
+    "docs/assets/architecture.svg",
+    "docs/assets/offline-demo-output.txt",
     "tests/test_formal_no_side_effects.py",
     "tests/test_doctor_readonly.py",
 ]

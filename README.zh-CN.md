@@ -96,17 +96,54 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-重跑 V02 测试（在 `v02/` 下）：
+预期输出 `Ran 234 tests, OK (skipped=1)`（227 个原有测试 + v1.1 新增的 7 个
+副作用回归测试）。唯一跳过项需要项目内的旧版账本
+（`runs/episode_ledger.csv`），发布快照不含该文件，属**设计性跳过**。
+测试**不启动任何真实 episode**，也**不在仓库根写入 `runs/`**（GH-2 起，
+`formal` 的拒绝路径在任何文件系统副作用之前返回）；若你的环境里仍残留
+早前版本产生的 `runs/`（gitignored 测试产物），请先删除再重跑。
+
+重跑 V02 测试（先进入 `v02/`，解释器仍用上一级的 `.venv`）：
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+cd v02
+..\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
+
+预期输出 `Ran 143 tests, OK`。
 
 **CLI 安全警示**：`smoke`/`pilot` 会发起**真实计费 episode**（每个已发起
 episode，含失败/中断，在启动前即计入账本，没有免费重试）；本快照不含账本，
 如需运行仿真请先阅读 `docs/OWNER_GUIDE.zh-CN.md` 与
 `docs/REPRODUCTION_MANUAL.zh-CN.md`。`formal` 阶段**仅准备**，必须有人工
 GO，且本结题状态下为 NO-GO。
+
+## 离线示例（不运行仿真）
+
+```bash
+python examples/offline_demo.py
+```
+
+用合成数据演示"四条件共享扰动 → 最小 TTC 对比"的最小闭环（FakeAdapter
+语义；零 episode、零文件写入）。输出会明确标注
+`SYNTHETIC OUTPUT - NOT EXPERIMENTAL RESULTS`，**不得**当作实验结果引用。
+详见 `EXAMPLES.md` 与 `QUICKSTART.md`。
+
+## 文档索引
+
+| 文档 | 用途 |
+|---|---|
+| `INSTALLATION.md` | extras（`test` / `sim`）、平台差异、离线安装 |
+| `QUICKSTART.md` | 5 分钟离线路径 |
+| `ARCHITECTURE.md` | 模块图、账本/计费门、适配器、报告管道、安全门 |
+| `EXAMPLES.md` | 合成示例 + 如何阅读冻结结果 |
+| `TESTING.md` | 命令、预期计数（234 / 143）、重复运行策略、CI |
+| `DATA_AVAILABILITY.md` | 数据包含/不包含、528 vs 748、申请方式 |
+| `CONTRIBUTING.md` | 硬性规则、代码风格、PR 清单 |
+| `SECURITY.md` | 漏洞报告渠道、密钥策略、安全门 |
+| `CHANGELOG.md` | v1.0 与 v1.1 工程变更史 |
+| `PUBLICATION_SCOPE.md` | v1.0 冻结研究包 vs v1.1 工程范围 |
+| `docs/`（冻结） | 结题证据：主张登记表、科研审计、账本对账 |
 
 ## 数据完整性与独立复算
 
@@ -120,8 +157,8 @@ GO，且本结题状态下为 NO-GO。
 - 独立复算器 `scripts/independent_verify_all.py` 只读账本与归档的原始
   episode JSON，不导入项目报告/统计模块，逐项重算全部已发布统计值
   （结题时 141 项断言全过）。其 `ROOT` 常量默认指向原项目路径
-  （`D:\SafeFlipLab`），且**需要私有原始数据**才能完整运行；在其它位置
-  checkout 时需改为本地路径。
+  （`SAFEFLIPLAB_ROOT` 环境变量可覆盖默认的仓库根），且**需要私有原始数据**
+  才能完整运行。
 
 ## 可复现性
 
@@ -141,3 +178,12 @@ CornerCaseLab v0.3.0（Apache-2.0，作者 吴昊霖 / lin-lab666），以**安�
 `docs/PROVENANCE.md` 与 `docs/ATTRIBUTION.md`。
 
 引用信息见 `CITATION.cff`。初学者导读：`docs/OWNER_GUIDE.zh-CN.md`。
+
+## 获取帮助与贡献
+
+- 问题 / 疑问：在本私有仓库的 Issue 中提出（仅协作者可见）。请附命令、
+  预期与实际输出、Python 版本，以及 `python -m safefliplab doctor` 的输出。
+- 安全：通过 GitHub **security advisory** 私下报告（见 `SECURITY.md`），
+  不要开公开 Issue。
+- 贡献：先读 `CONTRIBUTING.md`。真实仿真 episode 需明确授权；冻结数据与
+  结论不得改写。

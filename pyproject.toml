@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68"]
+requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -11,6 +11,29 @@ requires-python = ">=3.11,<3.14"
 license = "Apache-2.0"
 authors = [{ name = "吴昊霖" }]
 dependencies = []
+keywords = [
+  "autonomous driving",
+  "counterfactual testing",
+  "metamorphic testing",
+  "safety reversal",
+  "simulation",
+  "reproducibility",
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://github.com/lin-lab666/SafeFlipLab"
+Repository = "https://github.com/lin-lab666/SafeFlipLab"
+Issues = "https://github.com/lin-lab666/SafeFlipLab/issues"
 
 [project.optional-dependencies]
 sim = [
@@ -20,6 +43,15 @@ sim = [
   "numpy>=1.24,<3",
   "Pillow>=10,<13",
   "matplotlib>=3.8,<4",
+]
+test = [
+  "cornercaselab @ git+https://github.com/lin-lab666/CornerCaseLab@v0.3.0",
+  "highway-env==1.10.2",
+  "gymnasium==1.2.2",
+  "pytest",
+  "numpy>=1.24,<3",
+  "matplotlib>=3.8,<4",
+  "Pillow>=10,<13",
 ]
 
 [project.scripts]

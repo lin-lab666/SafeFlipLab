@@ -8,7 +8,7 @@ authors:
     given-names: "昊霖"
 version: "0.1.0"
 license: Apache-2.0
-repository-code: "not published"
+repository-code: "https://github.com/lin-lab666/SafeFlipLab"
 keywords:
   - "autonomous driving"
   - "counterfactual testing"

@@ -24,11 +24,16 @@ from __future__ import annotations
 
 import csv
 import hashlib
+import os
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(r"D:\SafeFlipLab")
+# GH-2: internal audit tool. Defaults to the repository root; override with
+# SAFEFLIPLAB_ROOT when the project tree lives elsewhere. NOTE: running without
+# --check rewrites the derived manifests under docs/, so use it only in a full
+# project checkout (never in the published snapshot, whose docs/ are frozen).
+ROOT = Path(os.environ.get("SAFEFLIPLAB_ROOT", str(Path(__file__).resolve().parent.parent)))
 MANIFEST = ROOT / "docs" / "FINAL_DELIVERY_MANIFEST.md"
 CSV_PATH = ROOT / "docs" / "FINAL_ARTIFACT_HASHES.csv"
 COUNTS_PATH = ROOT / "docs" / "FINAL_ARTIFACT_COUNTS.md"

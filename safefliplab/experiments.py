@@ -488,23 +488,7 @@ class PhaseDriver:
         logic lives in :func:`_execute_formal_phase` (reachable only by code that
         explicitly calls it, never by the CLI, which funnels through here).
         """
-        if not confirm:
-            raise PermissionError(
-                "formal phase requires explicit human GO: pass --confirm")
-        if max_episodes != FORMAL_TOTAL_EPISODES:
-            raise PermissionError(
-                f"formal phase requires --max-episodes {FORMAL_TOTAL_EPISODES}, got {max_episodes}")
-        plan = {
-            "status": "authorised-by-flags",
-            "methods": [METHOD_WIDE, METHOD_VERIFY],
-            "master_seeds": FORMAL_MASTER_SEED_COUNT,
-            "episodes_per_method_seed": FORMAL_EPISODES_PER_METHOD_SEED,
-            "total": FORMAL_TOTAL_EPISODES,
-        }
-        raise RuntimeError(
-            "formal driver is implemented but NOT executed by this build; "
-            "run it only after human review of pilot results. The real "
-            "scheduler is _execute_formal_phase. Plan: " + json.dumps(plan))
+        _formal_refusal_plan(confirm=confirm, max_episodes=max_episodes)
 
     def write_formal_manifest(self, *, master_seed: int, batch: str | None = None) -> Path:
         """Per-(seed, method) manifest. Unlike ``write_manifest`` (which writes
@@ -577,9 +561,45 @@ def run_pilot_phase(project_root: str | Path, config_path: str | Path,
     )
 
 
+def _formal_refusal_plan(*, confirm: bool, max_episodes: int) -> None:
+    """Validate the formal human-GO flags and raise the standard refusal.
+
+    Factored out of :meth:`PhaseDriver.run_formal` so that
+    :func:`run_formal_phase` can refuse **before** constructing a
+    ``PhaseDriver``. Driver construction creates ``runs/`` and an empty ledger
+    (``PhaseDriver.__init__`` -> ``mkdir`` + header write), so the refusal path
+    must have **zero filesystem side effects** (GH-2 fix; the pre-fix order let
+    the CLI tests leave a ``runs/`` residue and broke repeat test runs).
+
+    Always raises; never returns.
+    """
+    if not confirm:
+        raise PermissionError(
+            "formal phase requires explicit human GO: pass --confirm")
+    if max_episodes != FORMAL_TOTAL_EPISODES:
+        raise PermissionError(
+            f"formal phase requires --max-episodes {FORMAL_TOTAL_EPISODES}, got {max_episodes}")
+    plan = {
+        "status": "authorised-by-flags",
+        "methods": [METHOD_WIDE, METHOD_VERIFY],
+        "master_seeds": FORMAL_MASTER_SEED_COUNT,
+        "episodes_per_method_seed": FORMAL_EPISODES_PER_METHOD_SEED,
+        "total": FORMAL_TOTAL_EPISODES,
+    }
+    raise RuntimeError(
+        "formal driver is implemented but NOT executed by this build; "
+        "run it only after human review of pilot results. The real "
+        "scheduler is _execute_formal_phase. Plan: " + json.dumps(plan))
+
+
 def run_formal_phase(project_root: str | Path, config_path: str | Path, *,
                      confirm: bool, max_episodes: int) -> dict[str, Any]:
     cfg = load_json_config(config_path)
+    # GH-2: refuse before any filesystem side effect. This build never executes
+    # formal; the driver construction below is retained only as the structural
+    # entry point for a future, explicitly authorised scheduler and is
+    # unreachable while _formal_refusal_plan always raises.
+    _formal_refusal_plan(confirm=confirm, max_episodes=max_episodes)
     driver = PhaseDriver(phase="formal", method=METHOD_WIDE,
                          master_seed=cfg["formal_master_seeds"][0],
                          max_episodes=max_episodes, project_root=project_root)

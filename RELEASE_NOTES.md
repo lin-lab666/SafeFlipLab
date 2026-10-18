@@ -53,8 +53,8 @@
 
 ### 2.3 本发布包口径
 
-- **发布包磁盘文件数：201**；`PUBLICATION_MANIFEST.csv` 登记 **199** 行
-  （= 201 − 清单自身 − `scripts/verify_publication.py`，避免自引用）；
+- **发布包磁盘文件数：202**；`PUBLICATION_MANIFEST.csv` 登记 **200** 行
+  （= 202 − 清单自身 − `scripts/verify_publication.py`，避免自引用）；
   约 3.1 MB（精确字节数以 `PUBLICATION_MANIFEST.csv` 汇总与审计目录构建日志
   的脚本实测输出为准；本说明自身计入该总数，故不在此固化易漂移的精确值）。
 - 与原项目结题口径（**201** 文件 / 3,367,902 字节，含 `runs/` 全量，见
@@ -93,12 +93,12 @@
 | 结果汇总 | `reports/` | 28 |
 | 结果汇总 | `v02/reports/` | 24 |
 | 文档 | `docs/`（66 − 2，见 §5） | 64 |
-| 根文件 | README（中/英，发布版）、RELEASE_NOTES.md、LICENSE、CITATION.cff、pyproject.toml、requirements.txt、.gitignore（重建） | 8 |
+| 根文件 | README（中/英，发布版）、RELEASE_NOTES.md、LICENSE、CITATION.cff、pyproject.toml、requirements.txt、.gitignore（重建）、.gitattributes（字节级检出固定，见 §10） | 9 |
 | V02 README | `v02/README.md` | 1 |
-| **小计（各类合计，不含 manifest 自身）** | | **200** |
-| 磁盘总数 | 小计 200 + `PUBLICATION_MANIFEST.csv` 自身 | **201** |
+| **小计（各类合计，不含 manifest 自身）** | | **201** |
+| 磁盘总数 | 小计 201 + `PUBLICATION_MANIFEST.csv` 自身 | **202** |
 | 其中自引用不登记 | `PUBLICATION_MANIFEST.csv`、`scripts/verify_publication.py` | −2 |
-| **PUBLICATION_MANIFEST.csv 登记行数** | | **199** |
+| **PUBLICATION_MANIFEST.csv 登记行数** | | **200** |
 
 ### 报告产物中的绝对路径（披露，未篡改）
 
@@ -107,9 +107,10 @@
 **保留原始绝对路径字符串**（发布纪律：不为发布而篡改结果产物字节）。
 这些路径指向原开发位置，其中 `raw_path` 引用的原始 episode JSON **不在本包内**
 （见 §3）。发布副本与项目归档在这些结果产物及保留文档上**逐字节一致**
-（未做任何改写）；相对源项目，本包新增/改写的文件仅 6 个：README（中/英，
-发布版）、`RELEASE_NOTES.md`、`.gitignore`（重建）、
-`scripts/verify_publication.py`（新增）、`PUBLICATION_MANIFEST.csv`（新增）。
+（未做任何改写）；相对源项目，本包新增/改写的文件仅 7 个：README（中/英，
+发布版）、`RELEASE_NOTES.md`、`.gitignore`（重建）、`.gitattributes`
+（新增，字节级检出固定，见 §10）、`scripts/verify_publication.py`（新增）、
+`PUBLICATION_MANIFEST.csv`（新增）。
 同理，`docs/` 保留的文档中引用的 `D:\SafeFlipLab` 项目路径亦为原文。
 
 **`D:\` 绝对路径实测统计**（本次对发布副本全树重跑）：除本说明自身外
@@ -229,3 +230,42 @@ runs/ 之外为 6）。该计数经成员 B 独立复核确认；原 774 申报�
   `scripts/verify_publication.py` 复验 EXIT 0 PASS；除 `RELEASE_NOTES.md`
   外全部登记行哈希未变（证据见审计目录 `p1_a_rework/logs/`）。本次改动未
   触碰任何代码/测试/数据文件，未重跑测试套件。
+
+## 10. 字节级检出说明（P3 修复：G-ATTR）
+
+### 发现（P3 GitHub 远程独立验证）
+
+总控在远程验证时发现：推送内容本身字节精确——`git show HEAD:<relpath>`
+的 SHA-256 与 `PUBLICATION_MANIFEST.csv` 全部登记行一致（blob 级 199/199
+PASS，提交内容无需改动）。但本机系统级 gitconfig（WorkBuddy 捆绑
+PortableGit）设有 `core.autocrlf=true`：该设置作用于**检出**环节，
+任何在默认配置（Windows 常见）下的克隆都会把 LF 检出为 CRLF，导致克隆者
+运行 `scripts/verify_publication.py` 必然 FAIL（BYTES/HASH 不符）。
+
+### 修复
+
+在仓库根新增 `.gitattributes`（UTF-8、LF 行尾、217 字节）：
+
+```
+# Disable all EOL conversion: the published package must be byte-exact on
+# every platform. PUBLICATION_MANIFEST.csv records the SHA-256 of every
+# released file; scripts/verify_publication.py re-checks them.
+* -text
+```
+
+`* -text` 对全部路径禁用 EOL 转换（检出与提交双向），且**优先于任何
+本地/全局/系统级 gitconfig**。任何平台、任何 `core.autocrlf` 配置下的
+克隆，文件均与 `PUBLICATION_MANIFEST.csv` 登记字节逐字节一致，
+`scripts/verify_publication.py` 可直接复跑通过。
+
+### 连带订正（本节引入的计数变化）
+
+- 磁盘文件数 201 → **202**、manifest 登记 199 → **200**（新增
+  `.gitattributes` 一行登记）；§2.3、§4 表已同步订正。
+- 新增/改写文件清单 6 → **7** 个（加入 `.gitattributes`）。
+- manifest 与 verify 已重跑：登记 200 文件，EXIT 0 PASS
+  （files/bytes/CSV sha256 以 `PUBLICATION_MANIFEST.csv` 与
+  `scripts/verify_publication.py` 输出为准；完整证据见审计目录
+  `p1_a_rework/GITATTRIBUTES_FIX.md` 与 `p1_a_rework/logs/`）。
+- 说明：manifest 生成与校验脚本均已排除 `.git/`（该目录随 git init 出现，
+  不属发布内容、不登记）；本说明未触碰 `.git/` 任何文件。

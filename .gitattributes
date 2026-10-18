@@ -1,0 +1,4 @@
+# Disable all EOL conversion: the published package must be byte-exact on
+# every platform. PUBLICATION_MANIFEST.csv records the SHA-256 of every
+# released file; scripts/verify_publication.py re-checks them.
+* -text

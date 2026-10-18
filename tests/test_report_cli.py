@@ -3,6 +3,7 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from safefliplab.cli import main
 from safefliplab.report import load_phase_data, write_report
@@ -79,8 +80,16 @@ class TestCliGuards(unittest.TestCase):
 
     def test_formal_refused_with_both_flags_but_not_executed(self):
         # Even with the correct flags the formal driver must not run.
-        code = main(["formal", "--confirm", "--max-episodes", "12800"])
+        # GH-2 (P1-01): the real experiments.run_formal_phase is mocked so this
+        # unit test cannot leave a runs/ directory behind; the refusal is
+        # simulated with the same exception type the real function raises.
+        # The real zero-side-effect behaviour is covered by
+        # tests/test_formal_no_side_effects.py.
+        with mock.patch("safefliplab.experiments.run_formal_phase",
+                        side_effect=RuntimeError("refused (mocked)")) as fake:
+            code = main(["formal", "--confirm", "--max-episodes", "12800"])
         self.assertEqual(code, 2)
+        fake.assert_called_once()
 
     def test_smoke_over_cap_refused(self):
         code = main(["smoke", "--max-episodes", "25"])

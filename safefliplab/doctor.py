@@ -82,16 +82,26 @@ def run_doctor(verbose: bool = False) -> int:
     except Exception as exc:
         check("highway-env env construction (no reset)", False, f"{type(exc).__name__}: {exc}")
 
-    # budget state from the ledger (read-only)
-    try:
-        from .ledger import EpisodeLedger
+    # budget state from the ledger (strictly read-only: never create the file).
+    # GH-2 (DOCTOR-01): constructing EpisodeLedger on a missing path mkdirs
+    # runs/ and writes an empty header, which made this "read-only" command
+    # leave a residue and broke repeat test runs. Check for the file first.
+    ledger_path = PROJECT_ROOT / "runs" / "episode_ledger.csv"
+    if ledger_path.is_file():
+        try:
+            from .ledger import EpisodeLedger
 
-        ledger = EpisodeLedger(PROJECT_ROOT / "runs" / "episode_ledger.csv")
+            ledger = EpisodeLedger(ledger_path)
+            for phase, cap in (("smoke", 24), ("pilot", 240), ("formal", 12800)):
+                used = ledger.launched_count(phase)
+                check(f"budget {phase}", used <= cap, f"launched={used}/{cap}")
+        except Exception as exc:
+            check("ledger read", False, f"{type(exc).__name__}: {exc}")
+    else:
+        # A published snapshot has no runs/ ledger; report zero usage without
+        # touching the filesystem.
         for phase, cap in (("smoke", 24), ("pilot", 240), ("formal", 12800)):
-            used = ledger.launched_count(phase)
-            check(f"budget {phase}", used <= cap, f"launched={used}/{cap}")
-    except Exception as exc:
-        check("ledger read", False, f"{type(exc).__name__}: {exc}")
+            check(f"budget {phase}", True, f"no ledger in this checkout (0/{cap})")
 
     print("SafeFlipLab doctor")
     print("==================")

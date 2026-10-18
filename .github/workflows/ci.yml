@@ -1,0 +1,80 @@
+# SafeFlipLab — manual-only offline CI.
+#
+# WHY manual only:
+#   This is a PRIVATE repository. Automatic push/PR triggers would consume
+#   Actions minutes on every push; enabling them requires explicit owner
+#   approval. Run this workflow from the Actions tab (or `gh workflow run`)
+#   when you want a green check.
+#
+# WHAT it does: installs the `test` extra (no simulator extras needed for unit
+# tests) and runs the two offline unit suites + the publication verifier.
+#   * NO simulator episodes are launched (FakeAdapter / synthetic data only).
+#   * NO secrets are used; the token is read-only.
+name: offline-unit-tests
+
+on:
+  workflow_dispatch: {}   # manual trigger only — see header note
+
+permissions:
+  contents: read
+
+concurrency:
+  group: offline-unit-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: offline unit tests (py${{ matrix.python-version }}) — no simulator episodes
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - name: Checkout (read-only token)
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Print environment
+        run: |
+          python --version
+          python -m pip --version
+          uname -a
+
+      - name: Install test extra (offline unit tests only, no simulator episodes)
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ".[test]"
+
+      - name: Static offline guard — tests must not launch real episodes
+        # Fails if any test/example file mentions smoke/pilot/formal --confirm
+        # in a way that could launch a billed episode. Keep this strict: the
+        # suites are FakeAdapter-only by design.
+        run: |
+          set -eu
+          if grep -RInE '(smoke|pilot|formal)[[:space:]]+--confirm|--max-episodes[[:space:]]+12800' \
+               tests v02/tests examples 2>/dev/null \
+             | grep -vE 'test_report_cli\.py|test_formal_no_side_effects\.py'; then
+            echo "::error::A test/example appears to launch a real episode."
+            exit 1
+          fi
+          echo "offline guard: OK (no episode-launching invocations outside the refusal tests)"
+
+      - name: V01 unit tests (expected Ran 234, OK (skipped=1))
+        run: python -m unittest discover -s tests -q
+
+      - name: V02 unit tests (expected Ran 143, OK)
+        working-directory: v02
+        run: python -m unittest discover -s tests -q
+
+      - name: Publication manifest check (v1.0 byte-exact + v1.1 scope)
+        run: python scripts/verify_publication.py
+
+      - name: Offline synthetic demo (no simulator)
+        run: python examples/offline_demo.py

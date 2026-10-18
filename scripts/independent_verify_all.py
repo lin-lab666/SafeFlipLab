@@ -13,12 +13,17 @@ from __future__ import annotations
 import csv
 import json
 import math
+import os
 import random
 import statistics
 from collections import Counter, defaultdict
 from pathlib import Path
 
-ROOT = Path(r"D:\SafeFlipLab")
+# GH-2: internal audit tool. Defaults to the repository root; override with
+# SAFEFLIPLAB_ROOT when the project tree lives elsewhere. It needs the private
+# raw ledgers/episode JSON (runs/, v02/runs/), which are NOT part of the
+# published snapshot, and it writes an evidence file next to docs/ when run.
+ROOT = Path(os.environ.get("SAFEFLIPLAB_ROOT", str(Path(__file__).resolve().parent.parent)))
 OUT: list[str] = []
 FAILS: list[str] = []
 

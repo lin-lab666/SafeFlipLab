@@ -107,11 +107,23 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-V02 tests (run inside `v02/`):
+Expected output: `Ran 234 tests, OK (skipped=1)` (227 original tests + 7
+side-effect regression tests added in v1.1). The single skip needs the
+project-internal legacy ledger (`runs/episode_ledger.csv`), which the published
+snapshot does not contain — it is a **designed skip**. The tests launch **no
+real episodes** and **do not write `runs/` into the repository root** (since
+GH-2, the `formal` refusal path returns before any filesystem side effect). If
+your checkout still has a `runs/` residue from an earlier version (a gitignored
+test artefact), delete it before re-running.
+
+V02 tests (switch into `v02/` first; the interpreter stays at the parent level):
 
 ```powershell
-.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+cd v02
+..\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
+
+Expected output: `Ran 143 tests, OK`.
 
 **CLI safety notice**: `smoke`/`pilot` launch **real billed episodes** (every
 launched episode, including failed/interrupted ones, is billed before it
@@ -119,6 +131,33 @@ starts; there are no free retries). This snapshot contains no ledger; read
 `docs/OWNER_GUIDE.zh-CN.md` and `docs/REPRODUCTION_MANUAL.zh-CN.md` before
 running any simulation. `formal` is prepared only, requires an explicit human
 GO, and is NO-GO in this closeout state.
+
+## Offline demo (no simulation)
+
+```bash
+python examples/offline_demo.py
+```
+
+A synthetic walkthrough of the four-condition design (FakeAdapter semantics,
+zero episodes, zero files). It prints `SYNTHETIC OUTPUT - NOT EXPERIMENTAL
+RESULTS` and must not be quoted as a result. See `EXAMPLES.md` and
+`QUICKSTART.md`.
+
+## Documentation
+
+| Document | Purpose |
+|---|---|
+| `INSTALLATION.md` | extras (`test` / `sim`), platform notes, offline installs |
+| `QUICKSTART.md` | 5-minute offline path |
+| `ARCHITECTURE.md` | module map, ledger/billing gate, adapters, report pipeline, safety gates |
+| `EXAMPLES.md` | synthetic demo + how to read the frozen results |
+| `TESTING.md` | commands, expected counts (234 / 143), repeat-run policy, CI |
+| `DATA_AVAILABILITY.md` | included/excluded data, 528 vs 748 episodes, request process |
+| `CONTRIBUTING.md` | ground rules, style, PR checklist |
+| `SECURITY.md` | reporting channel, secrets policy, gates |
+| `CHANGELOG.md` | v1.0 and v1.1 engineering history |
+| `PUBLICATION_SCOPE.md` | v1.0 frozen research package vs v1.1 engineering scope |
+| `docs/` (frozen) | closeout evidence: claims register, research audit, ledger reconciliation |
 
 ## Data integrity and independent recomputation
 
@@ -155,3 +194,13 @@ interface is reused from CornerCaseLab v0.3.0 (Apache-2.0, (c) 吴昊霖 /
 lin-lab666) as an installed dependency; HighwayEnv/Gymnasium and their
 upstreams retain their own licences. See `docs/PROVENANCE.md` and
 `docs/ATTRIBUTION.md`. Citation metadata: `CITATION.cff`.
+
+## Getting help and contributing
+
+- Bugs / questions: open an issue in this private repository (collaborators
+  only). Include the command, expected vs actual, Python version, and the
+  output of `python -m safefliplab doctor`.
+- Security: report privately via a GitHub **security advisory** — see
+  `SECURITY.md`. Do not open a public issue.
+- Contributions: read `CONTRIBUTING.md` first. Real simulation episodes need
+  explicit authorisation; frozen data and conclusions must not be rewritten.

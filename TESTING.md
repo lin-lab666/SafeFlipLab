@@ -4,11 +4,12 @@
 
 | Suite | Command | Expected |
 |---|---|---|
-| V01 | `python -m unittest discover -s tests -q` | **Ran 234 tests, OK (skipped=1)**, EXIT 0 |
+| V01 | `python -m unittest discover -s tests -q` | **Ran 242 tests, OK (skipped=1)**, EXIT 0 |
 | V02 | `cd v02 && python -m unittest discover -s tests -q` (interpreter from the parent `.venv`) | **Ran 143 tests, OK**, EXIT 0 |
 
 V01 = 227 original tests + 7 side-effect regression tests added in v1.1
-(`tests/test_formal_no_side_effects.py`: 5, `tests/test_doctor_readonly.py`: 2).
+(`tests/test_formal_no_side_effects.py`: 5, `tests/test_doctor_readonly.py`: 2)
++ 8 CI-offline-guard tests added in v1.2.0 (`tests/test_ci_offline_guard.py`).
 
 ## Why one test is skipped
 

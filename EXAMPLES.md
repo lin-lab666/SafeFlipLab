@@ -53,6 +53,20 @@ resolution is the same order as the observed effects. See
 `docs/CLAIMS_REGISTER.zh-CN.md` (C1–C18 allowed claims, X1–X17 forbidden
 readings) before quoting any number.
 
+To get a structured, read-only summary (and a result figure) straight from the
+published summaries, run:
+
+```bash
+python examples/read_real_results.py            # pilot, writes docs/assets/result_summary.png
+python examples/read_real_results.py --phase smoke --no-plot
+```
+
+It reads only the public `v02/reports/` summaries (no private `runs/` data),
+prints `REAL HISTORICAL RESULTS — READ ONLY` banners, cross-checks recomputed
+anchor means against the stored point estimates, and launches **zero** episodes.
+See the header docstring for the four content classes (synthetic / real
+historical / recomputable / requires-private-data).
+
 ## 3. Write your own offline experiment (FakeAdapter)
 
 For a custom offline exercise, use the test doubles instead of the simulator:

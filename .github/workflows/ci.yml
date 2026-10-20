@@ -53,18 +53,14 @@ jobs:
           python -m pip install -e ".[test]"
 
       - name: Static offline guard — tests must not launch real episodes
-        # Fails if any test/example file mentions smoke/pilot/formal --confirm
-        # in a way that could launch a billed episode. Keep this strict: the
-        # suites are FakeAdapter-only by design.
-        run: |
-          set -eu
-          if grep -RInE '(smoke|pilot|formal)[[:space:]]+--confirm|--max-episodes[[:space:]]+12800' \
-               tests v02/tests examples 2>/dev/null \
-             | grep -vE 'test_report_cli\.py|test_formal_no_side_effects\.py'; then
-            echo "::error::A test/example appears to launch a real episode."
-            exit 1
-          fi
-          echo "offline guard: OK (no episode-launching invocations outside the refusal tests)"
+        # Executable guard (scripts/ci_offline_guard.py): exits non-zero if any
+        # test/example could launch a billed episode via a subprocess, a CLI
+        # entrypoint list, a real-adapter construction, or a real simulator
+        # import. Proven by tests/test_ci_offline_guard.py (positive + negative).
+        # The suites are FakeAdapter-only by design; the in-process formal GO
+        # gate is the second, independent defence. Manual-only trigger + a
+        # read-only token + no secrets remain the outermost guarantees.
+        run: python scripts/ci_offline_guard.py
 
       - name: V01 unit tests (expected Ran 234, OK (skipped=1))
         run: python -m unittest discover -s tests -q

@@ -10,7 +10,7 @@ cd SafeFlipLab
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[test]"
 
-# 2) V01 tests (expected: Ran 234 tests, OK (skipped=1))
+# 2) V01 tests (expected: Ran 242 tests, OK (skipped=1))
 .\.venv\Scripts\python.exe -m unittest discover -s tests -q
 
 # 3) V02 tests (expected: Ran 143 tests, OK)
@@ -30,7 +30,7 @@ Linux/macOS: replace `python`/`.\.venv\Scripts\python.exe` with
 
 ## What you should see
 
-- V01: `Ran 234 tests, OK (skipped=1)` — the single skip needs the
+- V01: `Ran 242 tests, OK (skipped=1)` — the single skip needs the
   project-internal legacy ledger, which the published snapshot does not
   contain (designed skip).
 - V02: `Ran 143 tests, OK`.

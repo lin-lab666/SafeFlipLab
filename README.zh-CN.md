@@ -28,10 +28,38 @@ SafeFlipLab 在同一个简化高速汇入仿真中（通过公开的 `cornercas
   失败尝试仍计费并如实披露（D37 是实例）。
 - **独立审计提名**：留出审计流 + 方法相关种子；历史 D42/D44 的不独立性
   **如实披露而非隐藏**。
-- **离线复现工程主张**：234 V01 + 143 V02 单元测试与字节级发布清单校验，
+- **离线复现工程主张**：242 V01 + 143 V02 单元测试与字节级发布清单校验，
   **零**仿真 episode、**零** `runs/` 写入。
 - **诚实阅读负结果**：四个主区间全部跨 0、M1/M2 在 Δgap 上方向相反、
   端点分辨率与效应同量级。
+
+## 四条件反事实设计如何工作
+
+反转问题采用 2×2 反事实设计。一个 **quartet** 是四次共享同一次扰动抽样、
+只在两个冻结干预因子上变化的 episode：
+
+| 因子 | 0（关） | 1（开） |
+|---|---|---|
+| `front_gap` | 基线 | `+2.0 m` |
+| `ego_speed` | 基线 | `−1.0 m/s` |
+
+```
+2×2 反事实矩阵（一个 quartet = 四次共享扰动抽样的运行）
+
+                  front_gap
+            关(off)           +2.0 m
+        ┌────────────────┬────────────────┐
+        │       00       │       10       │   ego_speed 关(off)
+        │    baseline    │    gap only    │
+        ├────────────────┼────────────────┤
+        │       01       │       11       │   ego_speed −1.0 m/s
+        │   speed only   │   gap+speed    │
+        └────────────────┴────────────────┘
+```
+
+由于同一 quartet 的四个单元共享同一次扰动抽样，配对差（`10−00`、`01−00`、
+`11−00` 及其交互项）在 anchor 层级抵消共享噪声。**anchor**（冻结的场景/
+控制器对）才是独立单元；95% 区间来自 18 个 anchor 的锚级 cluster bootstrap。
 
 ## 项目状态
 
@@ -39,7 +67,7 @@ SafeFlipLab 在同一个简化高速汇入仿真中（通过公开的 `cornercas
 |---|---|
 | 工程结题 | **PASS**——独立复算 141 项断言全过、manifest 闸门 PASS、doctor V01 17/17 + V02 7/7 GO、报告产物 58/58 逐字节幂等、账本全口径对账通过 |
 | 科研结论 | **INCONCLUSIVE**（合法结题结果；探索性/描述性） |
-| 测试（离线、零 episode） | **V01 234 OK (skipped=1)** / **V02 143 OK** |
+| 测试（离线、零 episode） | **V01 242 OK (skipped=1)** / **V02 143 OK** |
 | V01 formal（12,800 episodes） | **永久 NO-GO**——已实现、未获授权、从未运行 |
 | 仓库可见性 | 以仓库设置为准 |
 
@@ -57,6 +85,60 @@ SafeFlipLab 在同一个简化高速汇入仿真中（通过公开的 `cornercas
   其中 V02 smoke 含 1 个 error = D37）；历史真实发起合计 **748**
   （= 528 有效 + 220 作废首轮 pilot）。审计/方法比较在历史数据上不独立
   （D42/D44）：代码已修 ≠ 历史数据可作独立比较。
+
+## 真实结果摘要（V02 pilot，真实数据）
+
+来源：`v02/reports/pilot_report.md`——一次真实 HighwayEnv 运行（240 个已计费
+episode、54 个可用 quartet、18 个 anchor）。纯描述；确证性抽样假设未成立，
+**不产出任何 p 值**。
+
+**M1——每 episode 最小前向 TTC（秒）。** 负 Δ = 干预降低了安全裕度
+（反转方向）。
+
+| 对比 | 含义 | 点估计 (s) | 95% 锚级 cluster bootstrap 区间 | 锚数 |
+|---|---|---|---:|---:|
+| delta_gap | 10−00（间距） | +0.0127 | [−0.0525, +0.0769] | 18 |
+| delta_speed | 01−00（速度） | +0.0327 | [−0.0589, +0.1243] | 18 |
+| delta_both | 11−00（双干预） | +0.0030 | [−0.0436, +0.0526] | 18 |
+| i_lin | 交互项 | −0.0424 | [−0.1465, +0.0613] | 18 |
+
+**M2——前向 TTC 低于低 TTC 阈值的步占比**（越小越安全，方向与 M1 相反，
+D43）。各条件均值：`00` = 0.0234、`10` = 0.0252、`01` = 0.0127、
+`11` = 0.0172。
+
+**C13——二元碰撞端点**：54 个 quartet 共 2 次碰撞（`00` = 1、`10` = 1、
+`01` = 0、`11` = 0）；`11` 一次未撞（`reverse` = 0、`rescue` = 1）。
+
+四个 M1 区间**全部跨 0**：观测效应量与端点分辨率同量级，数据**不能支持
+安全反转结论**。M1 与 M2 在 Δgap 上符号相反，如实披露而非调和。
+
+## 关键图表
+
+**架构**——纯文本管道图（V01/V02 + 安全门）：
+
+![SafeFlipLab 管道架构图（V01/V02 + 安全门）](docs/assets/architecture.svg)
+
+**V02 pilot 真实结果图**——真实 HighwayEnv 数据，来自 `v02/reports/pilot/`：
+
+![图 1——四条件 TTC 分布](v02/reports/pilot/figure_1_condition_ttc.png)
+
+*图 1：四条件 TTC 分布（真实 pilot 数据）。*
+
+![图 2——锚级对比森林图](v02/reports/pilot/figure_2_anchor_contrast_forest.png)
+
+*图 2：锚级对比森林图（真实 pilot 数据）。*
+
+![图 4——双干预逐锚 delta](v02/reports/pilot/figure_4_per_anchor_delta_both.png)
+
+*图 4：双干预逐锚 delta（真实 pilot 数据）。*
+
+**结果汇总**——M1 森林图（锚级点估计 + 95% bootstrap 区间）与逐锚
+`delta_gap` 散点，由 `examples/read_real_results.py` 只读生成：
+
+![结果汇总——M1 森林图与逐锚 delta_gap（真实 pilot 数据）](docs/assets/result_summary.png)
+
+*结果汇总：M1 四个区间全部跨 0（灰色），与 INCONCLUSIVE 结题一致。详见
+`examples/read_real_results.py`。*
 
 ## CLI 速览
 
@@ -84,7 +166,7 @@ SafeFlipLab 在同一个简化高速汇入仿真中（通过公开的 `cornercas
 
 - `scripts/independent_verify_all.py`（独立复算器）的**完整重跑需要私有
   原始数据**（它只读账本 + 归档原始 episode JSON）；在本公开包范围内，
-  复现性以**测试套件**（V01 227 + V02 143，合成数据/mock，不消耗真实
+  复现性以**测试套件**（V01 242 + V02 143，合成数据/mock，不消耗真实
   episode）与**结果摘要**（reports/）为准。
 - 原项目的 201 文件结题口径清单（`docs/FINAL_ARTIFACT_HASHES.csv` 等）
   记录了含 `runs/` 的完整集合；本发布包口径见 `RELEASE_NOTES.md` §2.3，
@@ -133,8 +215,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-预期输出 `Ran 234 tests, OK (skipped=1)`（227 个原有测试 + v1.1 新增的 7 个
-副作用回归测试）。唯一跳过项需要项目内的旧版账本
+预期输出 `Ran 242 tests, OK (skipped=1)`（227 个原有测试 + v1.1 新增的 7 个
+副作用回归测试 + v1.2.0 新增的 8 个 CI 离线守卫测试）。唯一跳过项需要项目内的
+旧版账本
 （`runs/episode_ledger.csv`），发布快照不含该文件，属**设计性跳过**。
 测试**不启动任何真实 episode**，也**不在仓库根写入 `runs/`**（GH-2 起，
 `formal` 的拒绝路径在任何文件系统副作用之前返回）；若你的环境里仍残留
@@ -175,12 +258,15 @@ python examples/offline_demo.py
 | `ARCHITECTURE.md` | 模块图、账本/计费门、适配器、报告管道、安全门 |
 | `docs/assets/architecture.svg` | 纯文本管道图（V01/V02 + 安全门） |
 | `EXAMPLES.md` | 合成示例 + 如何阅读冻结结果 |
-| `TESTING.md` | 命令、预期计数（234 / 143）、重复运行策略、CI |
+| `TESTING.md` | 命令、预期计数（242 / 143）、重复运行策略、CI |
 | `DATA_AVAILABILITY.md` | 数据包含/不包含、528 vs 748、申请方式 |
 | `CONTRIBUTING.md` | 硬性规则、代码风格、PR 清单 |
 | `SECURITY.md` | 漏洞报告渠道、密钥策略、安全门 |
-| `CHANGELOG.md` | v1.0 与 v1.1 工程变更史 |
-| `PUBLICATION_SCOPE.md` | v1.0 冻结研究包 vs v1.1 工程范围 |
+| `CHANGELOG.md` | v1.0、v1.1 与 v1.2.0 工程变更史 |
+| `PUBLICATION_SCOPE.md` | v1.0 冻结研究包 vs v1.1/v1.2 工程范围 |
+| `RELEASE_NOTES.md` | v1.0 发布说明：数据可用性、绝对路径披露、范围（§2.3） |
+| `RELEASE_NOTES_v1.2.0.md` | v1.2.0（待发布）发布说明 |
+| `scripts/ci_offline_guard.py` | 可执行离线守卫（拦截真实仿真启动模式） |
 | `docs/`（冻结） | 结题证据：主张登记表、科研审计、账本对账 |
 
 ## 数据完整性与独立复算
@@ -212,15 +298,16 @@ python examples/offline_demo.py
 
 SafeFlipLab 自身代码为 Apache-2.0（见 `LICENSE`）。仿真接口复用自
 CornerCaseLab v0.3.0（Apache-2.0，作者 吴昊霖 / lin-lab666），以**安装依赖**
-方式使用；HighwayEnv/Gymnasium 等保留各自许可。详见
+方式使用；HighwayEnv/Gymnasium 等保留各自许可（HighwayEnv MIT、Gymnasium
+MIT、NumPy BSD-3-Clause、Pillow HPND、matplotlib license、pygame LGPL）。详见
 `docs/PROVENANCE.md` 与 `docs/ATTRIBUTION.md`。
 
 引用信息见 `CITATION.cff`。初学者导读：`docs/OWNER_GUIDE.zh-CN.md`。
 
 ## 获取帮助与贡献
 
-- 问题 / 疑问：在本私有仓库的 Issue 中提出（仅协作者可见）。请附命令、
-  预期与实际输出、Python 版本，以及 `python -m safefliplab doctor` 的输出。
+- 问题 / 疑问：在本仓库的 Issue 中提出。请附命令、预期与实际输出、
+  Python 版本，以及 `python -m safefliplab doctor` 的输出。
 - 安全：通过 GitHub **security advisory** 私下报告（见 `SECURITY.md`），
   不要开公开 Issue。
 - 贡献：先读 `CONTRIBUTING.md`。真实仿真 episode 需明确授权；冻结数据与

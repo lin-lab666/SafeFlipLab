@@ -104,3 +104,23 @@ python scripts/verify_publication.py
 审计链），并在本文档与 `README.md` 的文档索引中说明其性质：读到这些路径时，
 应理解为"项目内部审计时点记录"，而非可复现步骤。对外复现以
 `QUICKSTART.md` / `TESTING.md` 与 `scripts/verify_publication.py` 为准。
+
+## 6. v1.2 归属性勘误（2026-10-20，不修改冻结文件本体）
+
+独立安全审查（Red Team）发现 `docs/PROVENANCE.md`（v1.0 冻结文件）中有两处
+**事实性失真**，因其属冻结研究包、改写会破坏字节级清单，故在此追加勘误、
+保持原文不变：
+
+1. **NumPy 许可证标注错误**：`docs/PROVENANCE.md` 将 NumPy 的许可列为 MIT，
+   实际应为 **BSD-3-Clause**。完整正确的第三方许可列表为：HighwayEnv **MIT**、
+   Gymnasium **MIT**、NumPy **BSD-3-Clause**、Pillow **HPND**、matplotlib
+   **matplotlib license**（PSF 衍生）、pygame **LGPL**。
+   该条不影响"SafeFlipLab 自身代码为 Apache-2.0、第三方依赖各按其自有许可"
+   的结论，仅归属性标注需更正。
+2. **Publication status 章节过时**：`docs/PROVENANCE.md` 的 "Publication
+   status" 仍写"尚未创建远程仓库、未推送、未发布"，这是 v1.0 结题时点的
+   历史记录；实际仓库已于 v1.1.0 发布（先 PRIVATE，后经用户授权转 PUBLIC）。
+   该章节应理解为**撰写时点快照**，当前公开状态以仓库设置为准。
+
+以上勘误只影响归属性/状态表述，**不改变任何科研数据、结果或结论**
+（仍为 ENGINEERING CLOSEOUT PASS / SCIENTIFIC CLAIM INCONCLUSIVE）。

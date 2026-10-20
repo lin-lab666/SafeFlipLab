@@ -53,6 +53,7 @@ V11_UPDATED: dict[str, str] = {
     ".gitignore": "P2: build/coverage artefacts",
     "safefliplab/experiments.py": "P1-01: formal refusal before any filesystem side effect",
     "safefliplab/doctor.py": "DOCTOR-01: budget check is strictly read-only (no runs/ creation)",
+    "safefliplab/__init__.py": "v1.2: __version__ aligned 0.1.0 -> 1.1.0 to match the published tag",
     "tests/test_report_cli.py": "P1-01: CLI formal guard mocks the scheduler (no side effects)",
     "scripts/build_final_manifest.py": "P2: ROOT overridable via SAFEFLIPLAB_ROOT",
     "scripts/independent_verify_all.py": "P2: ROOT overridable via SAFEFLIPLAB_ROOT",
@@ -75,8 +76,12 @@ POST_V1_PATTERNS = [
     "examples/**",
     "docs/assets/architecture.svg",
     "docs/assets/offline-demo-output.txt",
+    "docs/assets/result_summary.png",
+    "scripts/ci_offline_guard.py",
+    "RELEASE_NOTES_v1.2.0.md",
     "tests/test_formal_no_side_effects.py",
     "tests/test_doctor_readonly.py",
+    "tests/test_ci_offline_guard.py",
 ]
 
 # Directories that are never part of either scope (mirror .gitignore).

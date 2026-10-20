@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "safefliplab"
-version = "0.1.0"
+version = "1.2.0"
 description = "Budgeted counterfactual safety-reversal testing for simplified autonomous-driving simulations"
 readme = "README.md"
 requires-python = ">=3.11,<3.14"

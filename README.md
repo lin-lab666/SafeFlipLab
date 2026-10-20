@@ -35,12 +35,43 @@ observation-only controller. **Nothing here is a real-road safety claim.**
 - **Audit nominations independently**: a held-out audit stream with
   method-dependent seeds. The historical D42/D44 non-independence is disclosed,
   not hidden.
-- **Reproduce the engineering claims offline**: 234 V01 + 143 V02 unit tests
+- **Reproduce the engineering claims offline**: 242 V01 + 143 V02 unit tests
   and a byte-level publication-manifest check, with **zero** simulator
   episodes and **zero** files written to `runs/`.
 - **Read the negative result honestly**: all four primary intervals cross
   zero, M1/M2 disagree on `Δgap`, and the endpoint resolution is the same
   order as the observed effect.
+
+## How the four-condition design works
+
+The reversal question uses a 2×2 counterfactual design. A **quartet** is four
+episodes that share one perturbation draw and vary two frozen intervention
+factors:
+
+| Factor | 0 (off) | 1 (on) |
+|---|---|---|
+| `front_gap` | baseline | `+2.0 m` |
+| `ego_speed` | baseline | `−1.0 m/s` |
+
+```
+2×2 counterfactual matrix (one quartet = four shared-draw runs)
+
+                    front_gap
+              off              +2.0 m
+        ┌────────────────┬────────────────┐
+        │       00       │       10       │   ego_speed off
+        │    baseline    │    gap only    │
+        ├────────────────┼────────────────┤
+        │       01       │       11       │   ego_speed −1.0 m/s
+        │   speed only   │   gap+speed    │
+        └────────────────┴────────────────┘
+```
+
+Because all four cells of a quartet share the same perturbation draw, the
+paired differences (`10−00`, `01−00`, `11−00`, and their interaction) cancel
+shared noise at the anchor level. The **anchor** (a frozen scenario/controller
+pair) is the independent unit; 95% intervals come from an anchor-level cluster
+bootstrap over 18 anchors.
 
 ## Project status
 
@@ -48,7 +79,7 @@ observation-only controller. **Nothing here is a real-road safety claim.**
 |---|---|
 | Engineering closeout | **PASS** — independent recomputation of 141 assertions, manifest gate PASS, doctor V01 17/17 + V02 7/7 GO, 58/58 report artefacts byte-idempotent, full ledger reconciliation |
 | Scientific claim | **INCONCLUSIVE** (a legitimate closeout outcome; exploratory/descriptive) |
-| Tests (offline, zero episodes) | **V01 234 OK (skipped=1)** / **V02 143 OK** |
+| Tests (offline, zero episodes) | **V01 242 OK (skipped=1)** / **V02 143 OK** |
 | V01 formal (12,800 episodes) | **permanent NO-GO** — implemented, never authorised, never run |
 | Repository visibility | as configured in the repository settings |
 
@@ -70,6 +101,64 @@ observation-only controller. **Nothing here is a real-road safety claim.**
   + 220 voided first pilot). Audit/method comparisons on historical data are
   not independent (D42/D44): fixed code does not make historical data an
   independent comparison.
+
+## Real results summary (V02 pilot, real data)
+
+Source: `v02/reports/pilot_report.md` — a real HighwayEnv run (240 billed
+episodes, 54 usable quartets, 18 anchors). Descriptive only; the confirmatory
+sampling assumptions did not hold, so **no p-value is reported**.
+
+**M1 — per-episode minimal forward TTC (seconds).** Negative Δ = the
+intervention reduced the safety margin (reversal direction).
+
+| Contrast | Meaning | Point estimate (s) | 95% anchor-level cluster-bootstrap interval | Anchors |
+|---|---|---|---:|---:|
+| delta_gap | 10−00 (gap) | +0.0127 | [−0.0525, +0.0769] | 18 |
+| delta_speed | 01−00 (speed) | +0.0327 | [−0.0589, +0.1243] | 18 |
+| delta_both | 11−00 (both) | +0.0030 | [−0.0436, +0.0526] | 18 |
+| i_lin | interaction | −0.0424 | [−0.1465, +0.0613] | 18 |
+
+**M2 — share of steps with forward TTC below the low-TTC threshold** (smaller
+is safer, the *opposite* sign convention from M1, D43). Condition means:
+`00` = 0.0234, `10` = 0.0252, `01` = 0.0127, `11` = 0.0172.
+
+**C13 — binary collision endpoint**: 2 collisions across 54 quartets
+(`00` = 1, `10` = 1, `01` = 0, `11` = 0); `11` never collided
+(`reverse` = 0, `rescue` = 1).
+
+All four M1 intervals **cross zero**: the observed effect size is the same
+order as the endpoint resolution, so the data **cannot support a
+safety-reversal conclusion**. M1 and M2 disagree in sign on `Δgap`, which is
+disclosed rather than resolved.
+
+## Key figures
+
+**Architecture** — text-only pipeline diagram (V01/V02 + safety gates):
+
+![SafeFlipLab pipeline architecture (V01/V02 + safety gates)](docs/assets/architecture.svg)
+
+**Real V02 pilot results** — real HighwayEnv data, from `v02/reports/pilot/`:
+
+![Figure 1 — per-condition TTC across the four conditions](v02/reports/pilot/figure_1_condition_ttc.png)
+
+*Figure 1 — per-condition TTC (real pilot data).*
+
+![Figure 2 — anchor-level contrast forest](v02/reports/pilot/figure_2_anchor_contrast_forest.png)
+
+*Figure 2 — anchor-level contrast forest (real pilot data).*
+
+![Figure 4 — per-anchor delta, both interventions](v02/reports/pilot/figure_4_per_anchor_delta_both.png)
+
+*Figure 4 — per-anchor delta for the `both` intervention (real pilot data).*
+
+**Result summary** — M1 forest (anchor-level point estimates + 95% bootstrap
+intervals) and per-anchor `delta_gap` scatter, generated read-only from the
+published summaries by `examples/read_real_results.py`:
+
+![Result summary — M1 forest and per-anchor delta_gap (real pilot data)](docs/assets/result_summary.png)
+
+*Result summary — all four M1 intervals cross zero (grey), consistent with the
+INCONCLUSIVE closeout. See `examples/read_real_results.py`.*
 
 ## CLI at a glance
 
@@ -99,7 +188,7 @@ Consequently:
 - `scripts/independent_verify_all.py` needs the **private raw data** for a
   full rerun (it reads only the ledgers and archived raw episode JSON);
   within this public package, reproducibility rests on the **test suites**
-  (V01 227 + V02 143, synthetic/mock, no real episodes) and the **result
+  (V01 242 + V02 143, synthetic/mock, no real episodes) and the **result
   summaries** (`reports/`).
 - The original project's 201-file closeout manifest
   (`docs/FINAL_ARTIFACT_HASHES.csv` etc.) records the full set including
@@ -150,8 +239,9 @@ python -m venv .venv
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
-Expected output: `Ran 234 tests, OK (skipped=1)` (227 original tests + 7
-side-effect regression tests added in v1.1). The single skip needs the
+Expected output: `Ran 242 tests, OK (skipped=1)` (227 original tests + 7
+side-effect regression tests added in v1.1 + 8 CI-offline-guard tests added in
+v1.2.0). The single skip needs the
 project-internal legacy ledger (`runs/episode_ledger.csv`), which the published
 snapshot does not contain — it is a **designed skip**. The tests launch **no
 real episodes** and **do not write `runs/` into the repository root** (since
@@ -195,12 +285,15 @@ RESULTS` and must not be quoted as a result. See `EXAMPLES.md` and
 | `ARCHITECTURE.md` | module map, ledger/billing gate, adapters, report pipeline, safety gates |
 | `docs/assets/architecture.svg` | text-only pipeline diagram (V01/V02 + gates) |
 | `EXAMPLES.md` | synthetic demo + how to read the frozen results |
-| `TESTING.md` | commands, expected counts (234 / 143), repeat-run policy, CI |
+| `TESTING.md` | commands, expected counts (242 / 143), repeat-run policy, CI |
 | `DATA_AVAILABILITY.md` | included/excluded data, 528 vs 748 episodes, request process |
 | `CONTRIBUTING.md` | ground rules, style, PR checklist |
 | `SECURITY.md` | reporting channel, secrets policy, gates |
-| `CHANGELOG.md` | v1.0 and v1.1 engineering history |
-| `PUBLICATION_SCOPE.md` | v1.0 frozen research package vs v1.1 engineering scope |
+| `CHANGELOG.md` | v1.0, v1.1 and v1.2.0 engineering history |
+| `PUBLICATION_SCOPE.md` | v1.0 frozen research package vs v1.1/v1.2 engineering scope |
+| `RELEASE_NOTES.md` | v1.0 release notes: data availability, absolute-path disclosure, scope (§2.3) |
+| `RELEASE_NOTES_v1.2.0.md` | v1.2.0 (pending) release notes |
+| `scripts/ci_offline_guard.py` | executable offline guard (blocks real-simulator launch patterns) |
 | `docs/` (frozen) | closeout evidence: claims register, research audit, ledger reconciliation |
 
 ## Data integrity and independent recomputation
@@ -236,14 +329,16 @@ RESULTS` and must not be quoted as a result. See `EXAMPLES.md` and
 SafeFlipLab's own code is Apache-2.0 (see `LICENSE`). The simulation
 interface is reused from CornerCaseLab v0.3.0 (Apache-2.0, (c) 吴昊霖 /
 lin-lab666) as an installed dependency; HighwayEnv/Gymnasium and their
-upstreams retain their own licences. See `docs/PROVENANCE.md` and
-`docs/ATTRIBUTION.md`. Citation metadata: `CITATION.cff`.
+upstreams retain their own licences (HighwayEnv MIT, Gymnasium MIT, NumPy
+BSD-3-Clause, Pillow HPND, matplotlib license, pygame LGPL). See
+`docs/PROVENANCE.md` and `docs/ATTRIBUTION.md`. Citation metadata:
+`CITATION.cff`.
 
 ## Getting help and contributing
 
-- Bugs / questions: open an issue in this private repository (collaborators
-  only). Include the command, expected vs actual, Python version, and the
-  output of `python -m safefliplab doctor`.
+- Bugs / questions: open an issue in this repository. Include the command,
+  expected vs actual, Python version, and the output of
+  `python -m safefliplab doctor`.
 - Security: report privately via a GitHub **security advisory** — see
   `SECURITY.md`. Do not open a public issue.
 - Contributions: read `CONTRIBUTING.md` first. Real simulation episodes need

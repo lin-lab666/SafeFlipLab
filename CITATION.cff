@@ -6,7 +6,7 @@ abstract: "Budgeted counterfactual safety-reversal testing for simplified autono
 authors:
   - family-names: "吴"
     given-names: "昊霖"
-version: "0.1.0"
+version: "1.2.0"
 license: Apache-2.0
 repository-code: "https://github.com/lin-lab666/SafeFlipLab"
 keywords:
